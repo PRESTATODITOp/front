@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/rol.css">
+  <%- include('./partials/boostrap.ejs') %> 
+</head>
+<body>
+  <%- include('./partials/administrador.ejs') %> 
+
+  <div class="form-container">
+    <img src="/resources/img/logo.png" class="rounded-circle mx-auto d-block" alt="User Image">
+    <h2 class="text-center mb-4">Seleccione un rol</h2>
+    <form action="/registroRol" method="post">
+      <div class="form-group mb-3">
+        <label for="rol">Rol:</label>
+        <select class="form-control" name="selectRol">
+          <option hidden value="">-- Seleccione un rol --</option>
+          <option value="1">Aprendiz</option>
+          <option value="2">Instructor</option>
+          <option value="3">Coordinador</option>
+          <option value="4">Administrador</option>
+        </select>
+
+      </div>
+      <button id="btn-aceptar" type="submit" class="btn btn-success btn-block">Aceptar</button>
+    </form>
+  </div>
+</body>
+<script src="/resources/js/rol.js"></script>
+
+
+
+
+<%- include('./partials/footer.ejs') %>
+
+<% if (error === 'true') { %>
+  <script>
+    // Mostrar la SweetAlert de error
+    Swal.fire({
+      title: 'Error',
+      text: 'Por favor, selecciona un rol antes de continuar',
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
+  </script>
+  
+<% } %>
+
+</html>
+<!--V3-->

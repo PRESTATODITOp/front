@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/registroSolicitud.css">
+    <%- include('./partials/boostrap.ejs') %> 
+    <title>Registro de solicitud de insumos</title>
+</head>
+
+<body>
+
+  <%- include('./partials/administrador.ejs') %>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control mr-3" placeholder="Buscar insumo" id="search-input">
+            <div class="input-group-append">
+              <button class="btn btn-outline-info mr-3" type="button" id="search-button" title="Buscar">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="table table-borderless" id="tabla-solicitudes">
+              <thead>
+                <tr class="bg-success">
+                  <th>USUARIO</th>
+                  <th>TIPO DE INSUMO</th>
+                  <th>FECHA RESERVA</th>
+                  <th>CANTIDAD</th>
+                  <th>ESTADO </th>
+                  <th>OPCIONES</th>
+                </tr>
+              </thead>
+              <tbody id="registro-tbody">
+                <tr data-id="1">
+                  <% datosReserva.forEach((elemento,index)=>{ %>
+                    <tr>    
+                      <td><%= elemento.ID_RESERVA  %></td>
+                      <td><%= elemento.ID_USUARIO  %></td>
+                      <td><%= elemento.TIPO_INSUMO  %></td>
+                      <td><%= elemento.FECHA_RES  %></td>
+                      <td><%= elemento.CANTIDAD %></td>
+                      <td>
+                        <% if (datosNoti[index]) { %>
+                          <td>
+                            <%= datosNoti[index].ESTADO %>
+                          </td>
+                          <% } else { %>
+                            <td class="info1">-</td>
+                            <% } %> </td>
+
+                    </tr>
+                    
+                  
+                  <% }); %>
+
+
+          
+
+
+                            
+                    <i class="fas fa-trash-alt delete-icon trash-icon" title="Eliminar registro"></i>  
+                    <i class="fas fa-edit edit-icon mr-1" title="Editar registro" data-toggle="modal" data-target="#edit-modal"></i>
+                  </td>
+                    <i class="fas fa-trash-alt delete-icon trash-icon" title="Eliminar registro" title="Seleccionar"></i>  
+                    <i class="fas fa-edit edit-icon mr-1" title="Editar registro" data-toggle="modal" data-target="#edit-modal"></i>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit-modal-label">Editar registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="edit-rol" class="col-form-label">Rol:</label>
+            <select class="form-control" id="edit-rol">
+              <option value="Coordinador">Coordinador</option>
+              <option value="Instructor">Instructor</option>
+              <option value="Aprendiz">Aprendiz</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-insumo" class="col-form-label">Insumo:</label>
+            <input type="text" class="form-control" id="edit-insumo">
+          </div>
+          <div class="form-group">
+            <label for="edit-fechas" class="col-form-label">Fecha de solicitud:</label>
+            <input type="date" class="form-control" id="edit-fechas">
+          </div>
+          <div class="form-group">
+            <label for="edit-fechad" class="col-form-label">Fecha de devolución:</label>
+            <input type="date" class="form-control" id="edit-fechad">
+          </div>
+          <div class="form-group">
+            <label for="edit-cantidad" class="col-form-label">Cantidad:</label>
+            <input type="number" class="form-control" id="edit-cantidad">
+          </div>
+          <div class="form-group">
+            <label for="edit-estado" class="col-form-label">Estado:</label>
+            <select class="form-control" id="edit-estado">
+              <option value="DISPONIBLE">DISPONIBLE</option>
+              <option value="NO DISPONIBLE">NO DISPONIBLE</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="guardar-cambios">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>      
+
+   
+</body>
+<%- include('./partials/footer.ejs') %>
+<script src="/resources/js/registroSolicitud.js"></script>
+</html>
+<!--V3-->

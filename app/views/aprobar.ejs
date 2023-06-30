@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/aprobar.css">
+  <%- include('./partials/boostrap.ejs') %>
+    <title>APROBAR</title>
+</head>
+
+
+
+<body>
+  <!--Contenedor de logos-->
+  <%- include('./partials/iconos.ejs') %>
+    <!--Contenedor de la imagen-->
+    <div class="container">
+      <img src="/resources/img/logoSena.png" width="200px" class="mx-auto d-block">
+    </div>
+    <!-- contenedor del menu -->
+    <nav>
+      <ul>
+        <li><a href="menuCoordi">Inicio</a></li>
+        <li>
+          <a href="aprobar">Aprobar</a>
+        </li>
+        <li>
+          <a href="seguimiento">Seguimiento</a>
+        </li>
+        <li>
+          <a href="reportes">Reportes</a>
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+    <div class="fondo rounded-top">
+      <div class="contenedor-solicitud">
+        <div class="titulo"> Solicitudes De Prestamos</div>
+
+        <div class="buscador">
+          <input type="text" placeholder="Buscar" id="search-input" required>
+          <div class="btnbuscar" id="search-button">
+            <i class="fas fa-search icon"></i>
+
+          </div>
+        </div>
+      </div>
+      <div class="contenedor1">
+
+        <div class="table-wrapper">
+          <table class="table table-borderless" id="tabla1">
+            <thead>
+
+              <tr class="bg-success">
+                <th>CODIGO</th>
+                <th>PRODUCTO</th>
+                <th>CANTIDAD</th>
+                <th>TIPO </th>
+                <th>CARACTERISTICA</th></th>
+                <th>DOCUMENTO USUARIO</th>
+                <th></th>
+                <th></th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <% datosReserva.forEach((reserva,index)=>{ %>
+                <tr>
+                  <td>
+                    <%= reserva.ID_RESERVA %>
+                  </td>
+                  <td>
+                    <%= reserva.NOMBRE_INSUMO %>
+                  </td>
+
+                  <td>
+                    <%= reserva.CANTIDAD %>
+                  </td>  
+
+                  <td>
+                    <%= reserva.TIPO %>
+                  </td>
+                  <td><%= reserva.CARACTERISTICAS %></td>
+                  <td>
+                    <%= reserva.ID_USUARIO %>
+                  </td>
+                  <td>
+                    <div class="button-container">
+                    <form action="aceptar?id=<%=reserva.ID_RESERVA%>&iduser=<%=reserva.ID_USUARIO%>" method="POST">
+                      <button id="btnAceptar" type="submit" class="btnAceptar" data-reserva-id="<%= reserva.ID_RESERVA %>">Aceptar</button>
+                    </form>
+                    
+                      <form action="rechazar?id=<%=reserva.ID_RESERVA%>&iduser=<%=reserva.ID_USUARIO%>" method="POST">
+                        <button id="btnRechazar" type="submit" class="btnRechazar" data-reserva-id="<%= reserva.ID_RESERVA %>">Rechazar</button>
+                      </form>
+                      </div>
+
+                  </td>
+                 
+                  <% }); %>
+                </tr>
+
+
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+   
+</body>
+
+<script src="/resources/js/aprobar.js"></script>
+<script src="/resources/js/iconos.js"></script>
+
+</html>

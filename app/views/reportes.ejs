@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/reportes.css">
+  <%- include('./partials/boostrap.ejs') %>
+    <title>REPORTES</title>
+</head>
+
+
+
+<body>
+  <!--Contenedor de logos-->
+  <%- include('./partials/iconos.ejs') %>
+    <!--Contenedor de la imagen-->
+    <div class="container">
+      <img src="/resources/img/logoSena.png" width="200px" class="mx-auto d-block">
+    </div>
+    <!-- contenedor del menu -->
+    <nav>
+      <ul>
+        <li><a href="menuCoordi">Inicio</a></li>
+        <li>
+          <a href="aprobar">Aprobar</a>
+        </li>
+        <li>
+          <a href="seguimiento">Seguimiento</a>
+        </li>
+        <li>
+          <a href="reportes">Reportes</a>
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+    <div class="fondo rounded-top">
+      <div class="container-reporte rounded-top">
+        <div class="titulo"> REPORTES</div>
+
+        <div class="buscador">
+          <input type="text" placeholder="Buscar" required>
+          <div class="btn">
+            <i class="fas fa-search icon"></i>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="info rounded-top">
+        <section class="tinfo">
+          REPORTES DE AMBIENTES
+        </section>
+        <div class="botones">
+          <form id="generarReporte" method="POST">
+            <input type="hidden" name="datos">
+            <button class="btnGenerar" type="submit" onclick="setAction('pdf')">
+              <i class="fa-sharp fa-regular fa-file-pdf"></i>PDF
+            </button>
+            <button class="btnGenerar" type="submit" onclick="setAction('excel')">
+              <i class="fa-sharp fa-regular fa-file-excel"></i>EXCEL
+            </button>
+          </form>
+        </div>
+      </div>
+      <hr>
+
+
+
+      <hr>
+</body>
+<script src="/resources/js/comprobanteCoordi.js"></script>r
+<script src="/resources/js/iconos.js"></script>
+
+</html>
