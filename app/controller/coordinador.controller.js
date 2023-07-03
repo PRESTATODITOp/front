@@ -66,6 +66,7 @@ const aprobar = async (req, res) => {
 
 }
 
+
 const aceptar = async (req, res) => {
   const idReserva = req.query.id; // obtengo el ID desde la api
   const idUsuario = req.query.iduser;
@@ -76,6 +77,7 @@ const aceptar = async (req, res) => {
   try {
     const response = await fetch(rutaObtenerReserva);
     const reserva = await response.json();
+    console.log(reserva); // Imprimir la respuesta JSON en la consola
 
     const data = {
       "id_reserva": parseInt(idReserva),
@@ -97,16 +99,10 @@ const aceptar = async (req, res) => {
       const responseAceptar = await fetch(rutaAceptar, option);
 
       const responseData = await responseAceptar.json();
-      datoEnviado = true;
+      
 
-      // Eliminar la reserva del array datosReserva
-      datosReserva = datosReserva.filter(reserva => reserva.ID_RESERVA !== parseInt(idReserva));
 
-      if (data && data > 0) {
-      } else {
-        // Manejar la respuesta del servidor cuando si es valida
-        return res.redirect("/seguimiento?alerta=1");
-      }
+      res.redirect("/seguimiento");
     } catch (error) {
       console.error("Error en la petición:", error);
     }
@@ -114,6 +110,7 @@ const aceptar = async (req, res) => {
     console.error("Error al obtener la reserva:", error);
   }
 };
+
 
 const rechazar = async (req, res) => {
   const idReserva = req.query.id; // obtengo el ID desde la api
@@ -145,12 +142,13 @@ const rechazar = async (req, res) => {
       const responseRechazar = await fetch(ruta, option);
 
       const responseData = await responseRechazar.json();
-      datoEnviado = true;
+   
 
-      // Eliminar la reserva del array datosReserva
-      datosReserva = datosReserva.filter(reserva => reserva.ID_RESERVA !== parseInt(idReserva));
-
-      // console.log(responseData);
+      if (data && data > 0) {
+      } else {
+        // Manejar la respuesta del servidor cuando si es valida
+        return res.redirect("/seguimiento?alerta=1");
+      }
     } catch (error) {
       console.error("Error en la petición:", error);
     }
