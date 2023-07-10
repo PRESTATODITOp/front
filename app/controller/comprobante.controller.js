@@ -2,6 +2,7 @@ import  path  from 'path';
 import axios from "axios";
 import excel from "exceljs"
 import PDFDocument from "pdfkit-table";
+import moment from 'moment-timezone';
 
 
 
@@ -59,10 +60,10 @@ const generarPdf = async (req, res) => {
 
     // Agregar el pie de página
     const generador = 'prestaTodito';
-    const fechaImpresion = new Date().toLocaleString();
     doc.fontSize(10).text(`Generado por: ${generador}`);
-    doc.fontSize(10).text(`Fecha y hora de impresión: ${fechaImpresion}`, { align: 'right' });
-
+    doc.fontSize(12);
+    const fechaActual = moment().tz('America/Bogota').format('YYYY-MM-DD h:mm:ss A');
+    doc.text('Fecha de generación de reporte: ' + fechaActual, 10, 20);
     // Finalizar el PDF
     doc.end();
   } catch (error) {
