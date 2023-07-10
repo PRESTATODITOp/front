@@ -12,6 +12,7 @@ const registroCoordinador = async(req,res)=>{
 const registrarCoordi = async (req, res) => {
   
   try {
+    
     let data = {
       id_rol: req.body.id_rol,
     nombre: req.body.nombre,
