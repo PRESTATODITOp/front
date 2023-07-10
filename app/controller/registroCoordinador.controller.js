@@ -13,15 +13,17 @@ const registrarCoordi = async (req, res) => {
   
   try {
     let data = {
+      id_rol: req.body.id_rol,
     nombre: req.body.nombre,
     apellido: req.body.apellido,
     tipo_documento: req.body.tipo_documento,
     id: req.body.numero_documento,
-    correo_electronico: req.body.correo_electronico,
+    correo: req.body.correo_electronico,
     telefono: req.body.telefono,
     direccion: req.body.direccion,
-    contrasena: req.body.contrasena,
-    id_rol: req.body.id_rol
+    jornada: req.body.jornada,
+    genero: req.body.genero,
+    contrasena: req.body.contrasena
     };
 
     const url = "http://localhost:3000/api/usuario";
