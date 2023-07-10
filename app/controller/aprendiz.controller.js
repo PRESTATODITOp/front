@@ -61,8 +61,8 @@ const seguimientoA =  async (req, res) => {
 
 // Rutas post
 
-const InsertarComputadores = async (req, res) => {
-
+const InsertarComputador = async (req, res) => {
+  
   try {
     let data = {
       nombre_insumo: req.body.ID_COMPUTADOR,
@@ -73,7 +73,7 @@ const InsertarComputadores = async (req, res) => {
       hora_res: req.body.HORA,
       tiempo_requerido: req.body.TIEMPO,
       tipo_insumo:"computador",
-      cantidad:"0",
+      cantidad:"1"
     };
 
     const url = "http://localhost:3000/api/insumosReserva";
@@ -82,28 +82,29 @@ const InsertarComputadores = async (req, res) => {
       headers: {
         "Content-Type": "application/json"
       },
-
+      
       body: JSON.stringify(data)
-
+      
     };
     console.log(data);
     const response = await fetch(url, options)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => console.log(error))
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data);
+    })
+    .catch(error => console.log(error))
 
     // Inspeccionar la respuesta del servidor
+   
 
     if (data && data > 0) {
     } else {
       // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/prestamoPC2?alerta=1");
+      return res.redirect("/prestamoPc2?alerta=1");
     }
   } catch (error) {
     console.error(error);
-    // Manejar la respuesta del servidor cuando no es válida
+     // Manejar la respuesta del servidor cuando no es válida
     return res.redirect("/?alerta=2");
   }
 };
@@ -152,7 +153,7 @@ const Insertareportepc = async (req, res) => {
 
 
 export const aprendizController = {
-  menuAprendiz, controlCompu, Insertareportepc, formularioPC, InsertarComputadores, seguimientoA
+  menuAprendiz, controlCompu, Insertareportepc, formularioPC, InsertarComputador, seguimientoA
 };
 
 

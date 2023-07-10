@@ -36,12 +36,12 @@
   <!-- CONTENEDOR DEL FONDO Y EL LETRERO -->
   <div class="fondo rounded-top">
     <div class="container-letrero rounded-top">
-      PRESTAMO
+      RESERVAS
     </div>
     <!-- CONTENEDOR DEL FORMULARIO -->
       <div class="formulario">
-        <form class="forma-formulario" action="/insertarComputador" method="post" onsubmit="validarFormulario(e)">
-          <h1 class="titulo">Prestamo de PC</h1>
+        <form class="forma-formulario" action="/insertarComputadores" method="post" onsubmit="validarFormulario(e)">
+          <h1 class="titulo">Reserva de PC</h1>
   <!-- CONTENEDOR FORMULARIO -->
   <div class="contenedor-items-formulario">
     <input type="number" class="items" placeholder="a" id="documento" name="DOCUMENTO" required>
@@ -94,10 +94,10 @@
 <div class="contenedor-items-formulario">
   <select class="items-3" aria-placeholder="Default select example" id="tiempo" name="TIEMPO" required>
     <option hidden value="" disabled selected>Tiempo</option>
-    <option value="1hora">1 hora</option>
-    <option value="2horas">2 horas</option>
-    <option value="3horas">3 horas</option>
-    <option value="4horas">4 horas</option>
+    <option value="01:00:00">1 hora</option>
+    <option value="02:00:00">2 horas</option>
+    <option value="03:00:00">3 horas</option>
+    <option value="04:00:00">4 horas</option>
   </select>
 </div>
           <input type="submit" class="reserva-btn" value="RESERVAR">

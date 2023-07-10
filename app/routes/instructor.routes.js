@@ -27,9 +27,11 @@ instructor.post('/insertarHerramientas',instructorController.InsertarHerramienta
 
 instructor.post('/insertarAmbientes',instructorController.InsertarAmbientes);
 
-instructor.post('/insertarcomputador',instructorController.InsertarComputadores);
+instructor.post('/insertarComputador',instructorController.InsertarComputador);
 
-instructor.post('/insertaReportes',instructorController.reporteAula);
+instructor.post('/reportesAula',instructorController.reporteAulas);
+
+instructor.post('/reportesPc',instructorController.reportePc);
 
 
   

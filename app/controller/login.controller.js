@@ -9,7 +9,7 @@ export const validacionLogin = async (req, res) => {
     contrasena: req.body.contrasena
   };
 
-  const url = process.env.ENDPOINT + "/api/consulta";
+  const url = "http://localhost:3000/api/consulta";
 
   const options = {
     method: "POST",

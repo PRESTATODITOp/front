@@ -13,7 +13,7 @@ aprendiz.get('/seguimientoA',middle,aprendizController.seguimientoA)
 
 aprendiz.post('/insertareporte',aprendizController.Insertareportepc);
 
-aprendiz.post('/insertarComputador',middle,aprendizController.InsertarComputadores);
+aprendiz.post('/insertarComputadores',aprendizController.InsertarComputador);
 
 
 export default aprendiz;

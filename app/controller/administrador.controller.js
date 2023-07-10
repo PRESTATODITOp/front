@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 
 const rolAdmin = (req, res) => {
-res.render('rol.ejs', { error: req.query.error });  
+res.render('rol.ejs', { errorr: req.query.errorr });  
 };
   
   // Cuando el documento está listo, se ejecuta la función de devolución de llamada.
@@ -11,7 +11,7 @@ res.render('rol.ejs', { error: req.query.error });
     const selectedValue = req.body.selectRol;
   
     if (!selectedValue) {
-      res.redirect('/rol?error=true');
+      res.redirect('/rol?errorr=true');
     } else {
       let rol = "";
       switch (selectedValue) {
