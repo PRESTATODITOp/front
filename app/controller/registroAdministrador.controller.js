@@ -16,6 +16,7 @@ const registrarAdmi = async (req, res) => {
     correo: req.body.correo_electronico,
     telefono: req.body.telefono,
     direccion: req.body.direccion,
+    jornada: req.body.jornada,
     contrasena: req.body.contrasena,
     id_rol: req.body.id_rol,
     programa_formacion:"null",

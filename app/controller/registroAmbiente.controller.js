@@ -16,13 +16,13 @@ const registroA = async (req, res) => {
     let data = {
     id_ambiente: req.body.id_ambiente,
     cantidad_sillas: req.body.cantidad_sillas,
-    cant_mesas: req.body.cant_mesas,
+    cantidad_mesas: req.body.cantidad_mesas,
     num_aprendices: req.body.num_aprendices,
     num_equipos: req.body.num_equipos,
 
     };
 
-    const url = "http://localhost:3000/api/ambiente";
+    const url = "http://localhost:3000/api/ambientes";
     const options = {
       method: "POST",
       headers: {

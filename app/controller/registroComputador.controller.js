@@ -17,7 +17,7 @@ const registroC = async (req, res) => {
     let data = {
    marca: req.body.marca,
     cargador: req.body.cargador,
-    mouse: req.body.mouse,
+    mouse: req.body.mouse
     };
 
     const url = "http://localhost:3000/api/computador";

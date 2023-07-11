@@ -51,7 +51,7 @@ const registrarCoordi = async (req, res) => {
     if (data && data > 0) {
     } else {
       // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/material?alerta=1");
+      return res.redirect("/rol?alerta=1");
     }
   } catch (error) {
     console.error(error);
