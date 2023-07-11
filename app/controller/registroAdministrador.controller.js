@@ -6,53 +6,45 @@ const registroAdministrador = async(req,res)=>{
 }
 
 const registrarAdmi = async (req, res) => {
-  
   try {
-    let data = {
-    nombre: req.body.nombre,
-    apellido: req.body.apellido,
-    tipo_documento: req.body.tipo_documento,
-    id: req.body.numero_documento,
-    correo: req.body.correo_electronico,
-    telefono: req.body.telefono,
-    direccion: req.body.direccion,
-    jornada: req.body.jornada,
-    contrasena: req.body.contrasena,
-    id_rol: req.body.id_rol,
-    programa_formacion:"null",
-    numero_ficha:"null"
-    };
+      const data = {
+          nombre: req.body.nombre,
+          apellido: req.body.apellido,
+          tipo_documento: req.body.tipo_documento,
+          id: req.body.numero_documento,
+          correo: req.body.correo_electronico,
+          telefono: req.body.telefono,
+          direccion: req.body.direccion,
+          jornada: req.body.jornada,
+          contrasena: req.body.contrasena,
+          id_rol: req.body.id_rol,
+          programa_formacion: "null",
+          numero_ficha: "null"
+      };
 
-    const url = "http://localhost:3000/api/usuario";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      
-      body: JSON.stringify(data)
-      
-    };
-    console.log(data);
-    const response = await fetch(url, options)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error => console.log(error))
+      const url = "http://localhost:3000/api/usuario";
+      const options = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+      };
 
-    // Inspeccionar la respuesta del servidor
-   
+      const response = await fetch(url, options);
+      const responseData = await response.json();
 
-    if (data && data > 0) {
-    } else {
-      // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/rol?alerta=1");
-    }
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.send(responseData);
+      } else {
+          // Error en el registro
+          res.send(false);
+      }
   } catch (error) {
-    console.error(error);
-     // Manejar la respuesta del servidor cuando no es válida
-    return res.redirect("/?alerta=2");
+      console.error(error);
+      // Error en la petición
+      res.send(false);
   }
 };
 
