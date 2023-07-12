@@ -1,11 +1,12 @@
 import { Router } from "express";
-import axios from "axios";
+import middle from "../middleware/middleware.js";
+import admiToken from "../middleware/admiToken.js";
 import { registroMaterialController } from "../controller/registroMaterial.controller.js";
 const router = Router();
 
 
-router.get('/registroMaterial', registroMaterialController.registroMaterial);
-router.post('/registroMaterial', registroMaterialController.registroM);
+router.get('/registroMaterial',middle,admiToken,registroMaterialController.registroMaterial);
+router.post('/registroMaterial',middle,admiToken,registroMaterialController.registroM);
 
 
 

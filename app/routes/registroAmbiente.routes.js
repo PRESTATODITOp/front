@@ -1,11 +1,12 @@
 import { Router } from "express";
-import axios from "axios";
+import admiToken from "../middleware/admiToken.js";
+import middle from "../middleware/middleware.js";
 import { registroAmbienteController } from "../controller/registroAmbiente.controller.js";
 const router = Router();
 
 
-router.get('/registroAmbiente', registroAmbienteController.registroAmbiente);
-router.post('/registroAmbiente', registroAmbienteController.registroA);
+router.get('/registroAmbiente',middle,admiToken,registroAmbienteController.registroAmbiente);
+router.post('/registroAmbiente',middle,admiToken,registroAmbienteController.registroA);
 
 
 

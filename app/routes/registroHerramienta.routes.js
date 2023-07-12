@@ -1,5 +1,4 @@
 import { Router } from "express";
-import axios from "axios";
 import { registroHerramientaController } from "../controller/registroHerramienta.controller.js";
 const router = Router();
 

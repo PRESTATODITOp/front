@@ -1,35 +1,36 @@
 import { Router } from "express";
 import middle from "../middleware/middleware.js";
+import instruToken from "../middleware/instruToken.js";
 import { instructorController } from "../controller/instructor.controller.js";
 const instructor = Router();
 
 // RUTAS GET
 
-instructor.get('/menu-instructor',middle,instructorController.menuInstructor);
+instructor.get('/menu-instructor',middle,instruToken,instructorController.menuInstructor);
 
-instructor.get('/prestamoPcInstructor',middle,instructorController.formularioComputador)
+instructor.get('/prestamoPcInstructor',middle,instruToken,instructorController.formularioComputador)
 
-instructor.get('/respuestaPrestamo',middle,instructorController.respuestaPrestamo)
+instructor.get('/respuestaPrestamo',middle,instruToken,instructorController.respuestaPrestamo)
 
-instructor.get('/ambientes',middle,instructorController.formularioAmbiente)
+instructor.get('/ambientes',middle,instruToken,instructorController.formularioAmbiente)
 
-instructor.get('/herramientas',middle,instructorController.formularioHerramientas);
+instructor.get('/herramientas',middle,instruToken,instructorController.formularioHerramientas);
 
-instructor.get('/material',middle,instructorController.formularioMateriales);
+instructor.get('/material',middle,instruToken,instructorController.formularioMateriales);
   
-instructor.get('/controlAula',middle,instructorController.formularioControlAula)
+instructor.get('/controlAula',middle,instruToken,instructorController.formularioControlAula)
 
 // RUTAS POST
 
-instructor.post('/insertarMaterial',instructorController.InsertarMateriales);
+instructor.post('/insertarMaterial',instruToken,instructorController.InsertarMateriales);
 
-instructor.post('/insertarHerramientas',instructorController.InsertarHerramientas);
+instructor.post('/insertarHerramientas',instruToken,instructorController.InsertarHerramientas);
 
-instructor.post('/insertarAmbientes',instructorController.InsertarAmbientes);
+instructor.post('/insertarAmbientes',instruToken,instructorController.InsertarAmbientes);
 
-instructor.post('/insertarcomputador',instructorController.InsertarComputadores);
+instructor.post('/insertarcomputador',instruToken,instructorController.InsertarComputadores);
 
-instructor.post('/insertaReportes',instructorController.reporteAula);
+instructor.post('/insertaReportes',instruToken,instructorController.reporteAula);
 
 
   
