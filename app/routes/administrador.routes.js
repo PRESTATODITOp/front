@@ -6,6 +6,8 @@ const administrador = Router();
 
 administrador.get('/rol',middle,admiToken,administradorController.rolAdmin);
 administrador.post('/registroRol',middle,admiToken,administradorController.validarRol);
+administrador.get('/registroSolicitud',middle,admiToken,administradorController.solicitud)
+administrador.get('/usuariosRegistrados',middle,admiToken,administradorController.usuariosRegistrados);
 
 
 

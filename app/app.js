@@ -8,17 +8,13 @@ import cookieParser from 'cookie-parser';
 
 //import rutas
 import administrador from './routes/administrador.routes.js';
-import ambienteAdmin from './routes/ambienteAdmin.routes.js';
 import aprendiz from './routes/aprendiz.routes.js';
 import comprobante from './routes/comprobante.routes.js';
 import coordi from './routes/coordinador.routes.js';
-import herraAdmin from './routes/herraAdmin.routes.js';
 // import iconos from './routes/iconos.routes.js';
 import instructor from './routes/instructor.routes.js';
 import login from './routes/login.routes.js';
-import materiales from './routes/materiales.routes.js';
-import pcAdmin from './routes/pcAdmin.routes.js';
-import registros from './routes/registros.routes.js';
+import inventario from './routes/inventario.routes.js';
 import registroAdministrador from './routes/registroAdministrador.routes.js';
 import registroAprendiz from './routes/registroAprendiz.routes.js';
 import registroInstructor from './routes/registroInstructor.routes.js';
@@ -27,7 +23,6 @@ import registroAmbiente from './routes/registroAmbiente.routes.js';
 import registroComputador from './routes/registroComputador.routes.js';
 import registroHerramienta from './routes/registroHerramienta.routes.js';
 import registroMaterial from './routes/registroMaterial.routes.js';
-import usuariosRegistrados from './routes/usuariosRegistrados.routes.js';
 
 
 // const router = Router();
@@ -49,21 +44,16 @@ app.use(urlencoded({ extended: false }));
 app.use(json());
 
 
+
 // Usar las rutas definidas en routes
 app.use('/', administrador);
-app.use('/', ambienteAdmin);
 app.use('/', aprendiz);
-app.use('/', herraAdmin);
 app.use('/', comprobante);
 app.use('/', coordi);
-app.use('/', herraAdmin);
-app.use('/', pcAdmin);
 app.use('/', aprendiz);
 app.use('/', instructor);
 app.use('/', login);
-app.use('/', materiales);
-app.use('/', pcAdmin);
-app.use('/', registros);
+app.use('/', inventario);
 app.use('/', registroAprendiz);
 app.use('/', registroAdministrador);
 app.use('/', registroInstructor);
@@ -72,7 +62,6 @@ app.use('/', registroAmbiente);
 app.use('/', registroComputador);
 app.use('/', registroHerramienta);
 app.use('/', registroMaterial);
-app.use('/', usuariosRegistrados);
 // app.use('/', registrosUsers);
 
 
