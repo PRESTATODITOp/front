@@ -36,7 +36,6 @@
                   <th>CANTIDAD DE MESAS</th>
                   <th>NUMERO DE APRENDICES</th>
                   <th>NUMERO DE EQUIPOS</th>
-                  <th>OPCIONES</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,11 +46,6 @@
                     <td><%= elemento.CANT_MESAS %></td>
                     <td><%= elemento.NUM_APRENDICES %></td>
                     <td><%= elemento.NUM_EQUIPOS %></td>
-
-                    <td> 
-                      <i class="fas fa-trash-alt delete-icon trash-icon"></i>  
-                      <i class="fas fa-edit edit-icon mr-1" data-toggle="modal" data-target="#edit-modal"></i>
-                    </td>
                   </tr>
                 <% }); %>
                 

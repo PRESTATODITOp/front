@@ -22,15 +22,18 @@ instructor.get('/controlAula',middle,instruToken,instructorController.formulario
 
 // RUTAS POST
 
-instructor.post('/insertarMaterial',instruToken,instructorController.InsertarMateriales);
+instructor.post('/insertarMaterial',middle,instruToken,instructorController.InsertarMateriales);
 
-instructor.post('/insertarHerramientas',instruToken,instructorController.InsertarHerramientas);
+instructor.post('/insertarHerramientas',middle,instruToken,instructorController.InsertarHerramientas);
 
-instructor.post('/insertarAmbientes',instruToken,instructorController.InsertarAmbientes);
+instructor.post('/insertarAmbientes',middle,instruToken,instructorController.InsertarAmbientes);
 
-instructor.post('/insertarcomputador',instruToken,instructorController.InsertarComputadores);
+instructor.post('/insertarComputador',middle,instruToken,instructorController.InsertarComputador);
 
-instructor.post('/insertaReportes',instruToken,instructorController.reporteAula);
+instructor.post('/reportesAula',middle,instruToken,instructorController.reporteAulas);
+
+instructor.post('/reportesPc',middle,instruToken,instructorController.reportePc);
+
 
 
   

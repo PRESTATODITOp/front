@@ -17,7 +17,7 @@ const registroH = async (req, res) => {
     color: req.body.color,
     };
 
-    const url = "http://localhost:3000/api/herramienta";
+    const url = "http://localhost:3000/api/herramientas";
     const options = {
       method: "POST",
       headers: {

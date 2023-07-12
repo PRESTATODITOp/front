@@ -14,7 +14,8 @@ aprendiz.get('/seguimientoA',middle,aprenToken,aprendizController.seguimientoA)
 
 aprendiz.post('/insertareporte',aprenToken,aprendizController.Insertareportepc);
 
-aprendiz.post('/insertarComputador',middle,aprenToken,aprendizController.InsertarComputadores);
+aprendiz.post('/insertarComputador',middle,aprenToken,aprendizController.InsertarComputador);
+
 
 
 export default aprendiz;

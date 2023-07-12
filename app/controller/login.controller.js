@@ -9,7 +9,7 @@ export const validacionLogin = async (req, res) => {
     contrasena: req.body.contrasena
   };
 
-  const url = process.env.ENDPOINT + "/api/consulta";
+  const url = "http://localhost:3000/api/consulta";
 
   const options = {
     method: "POST",
@@ -81,22 +81,22 @@ export const validacionLogin = async (req, res) => {
 
         switch (datos.ID_ROL.toString()) {
           case "1":
-            console.log("Redireccionando a /menu-aprendiz");
+            console.log("Redireccionando a menu-aprendiz");
             res.cookie("PRESTATODITO", token);
             res.redirect("/menu-aprendiz");
             break;
           case "2":
-            console.log("Redireccionando a /menu-instructor");
+            console.log("Redireccionando a menu-instructor");
             res.cookie("PRESTATODITO", token);
             res.redirect("/menu-instructor");
             break;
           case "3":
-            console.log("Redireccionando a /aprobar");
+            console.log("Redireccionando a aprobar");
             res.cookie("PRESTATODITO", token);
             res.redirect("/aprobar");
             break;
           case "4":
-            console.log("Redireccionando a /rol");
+            console.log("Redireccionando a rol");
             res.cookie("PRESTATODITO", token);
             res.redirect("/rol");
             break;

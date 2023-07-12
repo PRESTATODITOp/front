@@ -24,59 +24,29 @@
           <h3>REGISTRO DE COMPUTADOR</h3>
         </div>
         <div class="mt-4">
-          <form action="guardarEquipo" method="post">
+          <form action="/guardarEquipo" method="post">
             <div class="form-group row">
               <label for="tipo" class="col-sm-2 col-form-label">Marca <span class="text-danger">*</span></label>
               <div class="col-sm-4">
-                <input type="text" name="MARCA" class="form-control" id="matrca" placeholder="Introduca la marca del equipo">
+                <input type="text" name="marca" class="form-control" id="marca" placeholder="Introduca la marca del equipo">
               </div>
             </div>
             <div class="form-group row">
               <label for="color" class="col-sm-2 col-form-label">tiene cargador? <span class="text-danger">*</span></label>
               <div class="col-sm-4">
-                <input type="text" name="CARGADOR" class="form-control" id="cargador" placeholder="Cuenta con cargador?">
+                <input type="text" name="cargador" class="form-control" id="cargador" placeholder="Cuenta con cargador?">
               </div>
             </div>
             <div class="form-group row">
               <label for="color" class="col-sm-2 col-form-label">tiene mouse? <span class="text-danger">*</span></label>
               <div class="col-sm-4">
-                <input type="text" name="MOUSE" class="form-control" id="mouse" placeholder="Cuenta con mouse?">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="imagen" class="col-sm-2 col-form-label">Insertar imagen: <span class="text-danger">*</span></label>
-              <div class="col-sm-4">
-                <div class="input-group">
-                  <div class="d-flex align-items-center">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-success" type="button" onclick="document.getElementById('imagen').click()"><i class="fas fa-eye"></i></button>
-                      <span class="mx-1"></span>
-                      <button class="btn btn-outline-danger" type="button" onclick="eliminarImagen()"><i class="fas fa-trash"></i></button>
-                    </div>
-                  </div> 
-                  <div class="ml-3">
-                    <input type="file" name="IMAGEN" id="imagen" style="display: none;" accept=".jpg,.png" onchange="previewImage()">
-                  </div>
-                </div>
-              </div> 
-              <div class="preview-container ml-5 mt-2">
-                <img id="preview" style="max-width: 100%; max-height: 200px;">
-              </div>
-              <div id="modalPreview" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <img id="modalPreviewImage" style="max-width: 100%; max-height: 80vh;">
-                    </div>
-                  </div>
-                </div>
+                <input type="text" name="mouse" class="form-control" id="mouse" placeholder="Cuenta con mouse?">
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-2"></div>
               <div class="col-sm-4">
                 <button type="submit" class="btn btn-success">Nuevo registro</button>
-                <button type="button" class="btn btn-danger" onclick="limpiarCampos()">Limpiar campos</button>
               </div>
             </div>
           </form>

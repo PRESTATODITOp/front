@@ -5,7 +5,11 @@ import fetch from "node-fetch";
 
 const menuInstructor = (req, res) => {
   res.render('menu-instructor.ejs');
-}
+};
+
+const formularioControlAula = async (req, res) => {
+  res.render('controlAula.ejs');
+ };
 
 const formularioComputador = async (req, res) => {
   try {
@@ -45,27 +49,6 @@ const respuestaPrestamo =  async (req, res) => {
   } catch (error) {
     console.error(error);
     res.redirect("/");  
-  }
-};
-
-const formularioControlAula = async (req, res) => {
-  try {
-    const rutaAmbientes = "http://localhost:3000/api/ambientes";
-
-    const opciones = {
-      method: "GET",
-    };
-
-    const [datosAmbientes] = await Promise.all([
-      fetch(rutaAmbientes, opciones).then(response => response.json())
-    ]);
-
-    res.render('controlAula', {
-      datosAmbientes: datosAmbientes[0]
-    });
-  } catch (error) {
-    console.error(error);
-    res.redirect("/");
   }
 };
 
@@ -168,8 +151,6 @@ const InsertarMateriales = async (req, res) => {
     .catch(error => console.log(error))
 
     // Inspeccionar la respuesta del servidor
-   
-
     if (data && data > 0) {
     } else {
       // Manejar la respuesta del servidor cuando si es valida
@@ -279,7 +260,7 @@ const InsertarAmbientes = async (req, res) => {
   }
 };
 
-const InsertarComputadores = async (req, res) => {
+const InsertarComputador = async (req, res) => {
   
   try {
     let data = {
@@ -291,7 +272,7 @@ const InsertarComputadores = async (req, res) => {
       hora_res: req.body.HORA,
       tiempo_requerido: req.body.TIEMPO,
       tipo_insumo:"computador",
-      cantidad:"0"
+      cantidad:"1"
     };
 
     const url = "http://localhost:3000/api/insumosReserva";
@@ -327,12 +308,55 @@ const InsertarComputadores = async (req, res) => {
   }
 };
 
-const reporteAula = async (req, res) => {
+const reporteAulas = async (req, res) => {
   
   try {
     let data = {
       id_usuario: req.body.DOCUMENTO,
       observaciones : req.body.OBSERVACIONES,
+      fechaPrestamo:"00/00/00",
+      final_prestamo :"0000/00/00"
+    };
+
+    const url = "http://localhost:3000/api/prestamos";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      
+      body: JSON.stringify(data)
+      
+    };
+    console.log(data);
+    const response = await fetch(url, options)
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data);
+    })
+    .catch(error => console.log(error))
+
+    // Inspeccionar la respuesta del servidor
+   
+
+    if (data && data > 0) {
+    } else {
+      // Manejar la respuesta del servidor cuando si es valida
+      return res.redirect("/controlAula?alerta=1");
+    }
+  } catch (error) {
+    console.error(error);
+     // Manejar la respuesta del servidor cuando no es válida
+    return res.redirect("/?alerta=2");
+  }
+};
+
+const reportePc = async (req, res) => {
+  
+  try {
+    let data = {
+      id_usuario: req.body.DOCUMENTO2,
+      observaciones : req.body.OBSERVACIONES2,
       fechaPrestamo:"00/00/00",
       final_prestamo :"0000/00/00"
     };
@@ -384,6 +408,7 @@ export const instructorController = {
   respuestaPrestamo,
   InsertarHerramientas,
   InsertarAmbientes,
-  InsertarComputadores, 
-  reporteAula
+  InsertarComputador, 
+  reporteAulas,
+  reportePc
 };

@@ -3,7 +3,7 @@
 
 .fondo{
   margin: 50px;
-  height: 600px;
+  height: 700px;
   background-color: #a8a8a8;
 }
 
@@ -17,9 +17,20 @@
 }
 
 .container-letrero-control{
+  position: relative;
   margin: 50px;
-  margin-left: 100px;
-  margin-top: 220px;
+  left: -5px;
+  top: 100px;
+  height: 70px;
+  font-size: 40px;
+  background-color: rgb(230, 230, 230)
+}
+
+.container-letrero-control2{
+  position: relative;
+  margin: 50px;
+  left: -5px;
+  top: 160px;
   height: 70px;
   font-size: 40px;
   background-color: rgb(230, 230, 230)
@@ -91,13 +102,6 @@ button.btn.btn-secondary{
   z-index: 0;
 }
 
-/* FROM ARCHIVO */
-.archivo{
-  position: absolute;
-  width: 5%;
-  font-size: 13px;
-  padding: 35px 350px;
-}
 
 .contenedor-formulario input:focus ~ label,
 .contenedor-formulario input:not(:placeholder-shown) ~ label {

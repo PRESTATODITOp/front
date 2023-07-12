@@ -28,9 +28,11 @@
             <table class="table table-borderless" id="tabla-solicitudes">
               <thead>
                 <tr class="bg-success">
+                  <th>ID</th>
                   <th>USUARIO</th>
                   <th>TIPO DE INSUMO</th>
                   <th>FECHA RESERVA</th>
+                  <th>HORA RESERVA</th>
                   <th>CANTIDAD</th>
                   <th>ESTADO </th>
                   <th>OPCIONES</th>
@@ -44,6 +46,7 @@
                       <td><%= elemento.ID_USUARIO  %></td>
                       <td><%= elemento.TIPO_INSUMO  %></td>
                       <td><%= elemento.FECHA_RES  %></td>
+                      <td><%= elemento.HORA_RES  %></td>
                       <td><%= elemento.CANTIDAD %></td>
                       <td>
                         <% if (datosNoti[index]) { %>
