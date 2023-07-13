@@ -13,9 +13,27 @@ this.value = this.value.replace(/[^0-9]/g, "");
 });
 });
 
-function validarFormulario(e) {
-  e.preventDefault();
- const formulario = document.querySelector("#formulario")
- formulario.submit();
- formulario.reset();
-};
+document.getElementById('formulario').addEventListener('submit', function (event) {
+  event.preventDefault();
+  var form = event.target;
+
+  if (form.checkValidity()) {
+      Swal.fire({
+          title: '¿Desea realizar la reserva?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+          cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+          if (result.value) {
+              Swal.fire({
+                  title: 'Se ha reservado de manera exitosa',
+                  icon: 'success',
+                  confirmButtonText: 'Aceptar'
+              }).then(function () {
+                  form.submit();
+              });
+          }
+      });
+  } 
+});

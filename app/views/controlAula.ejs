@@ -65,71 +65,10 @@
         </div>
       </div>
     </div>
-    <!-- <div class="container-letrero-control2 rounded-top">
-      <section class="control-reportes">
-        Reporte de equipos
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal2">
-          Agregar observacion
-        </button>
-      </section>
-       Modal -->
-       <!-- <div class="modal fade" id="exampleModal2" aria-hidden="true" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-       <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-           <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLabel">Agregue una observacion</h5>
-           </div>
-           texto de ambientes -->
-           <!-- <div class="contenedor-formulario">
-             <form action="/reportesPc" method="post" onsubmit="validarFormulario(e)">
-               <input type="text" class="items" placeholder="a" name="DOCUMENTO2" id="documento2" required>
-               <label for="" class="label">N° de DOCUMENTO</label>
-           </div> -->
-           <!-- body del modal -->
-           <!-- <div class="modal-body">
-             <textarea required="" class="form-control" id="elcontent" name="OBSERVACIONES2" rows="10"
-               data-rule="required" data-msg="Please write something for us">Describe tus quejas</textarea>
-             <div class="modal-footer">
-               <button type="reset" id="Cerrar-bnt2" class="btn2 btn-danger" data-dismiss="modal">Cerrar</button>
-               <button type="submit" id="Enviar-bnt2" class="btn2 btn-success">Enviar</button>
-             </div>
-           </div> -->
-     <!--boton para ingresar al modal -->
   </div>
-  <script>
-    document.getElementById('reportes-aula').addEventListener('submit', function (event) {
-             event.preventDefault();
-             var form = event.target;
- 
-             if (form.checkValidity()) {
-                 Swal.fire({
-                     title: '¿Desea registrar este usuario?',
-                     icon: 'question',
-                     showCancelButton: true,
-                     confirmButtonText: 'Aceptar',
-                     cancelButtonText: 'Cancelar'
-                 }).then(function (result) {
-                     if (result.value) {
-                         Swal.fire({
-                             title: 'Se ha registrado al usuario de manera exitosa',
-                             icon: 'success',
-                             confirmButtonText: 'Aceptar'
-                         }).then(function () {
-                             form.submit();
-                         });
-                     }
-                 });
-             } else {
-                 Swal.fire({
-                     title: 'Debe llenar todos los campos para registrar a un usuario',
-                     icon: 'warning',
-                     confirmButtonText: 'Aceptar'
-                 });
-             }
-         });
- </script>
+  
 
 </body>
 <script src="/resources/js/iconos.js"></script>
+<script src="/resources/js/controlAula.js"></script>
 </html>

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import middle from "../middleware/middleware.js";
+import validarDocumento from "../middleware/documentoToken.js";
 import instruToken from "../middleware/instruToken.js";
 import { instructorController } from "../controller/instructor.controller.js";
 const instructor = Router();
@@ -22,17 +23,17 @@ instructor.get('/controlAula',middle,instruToken,instructorController.formulario
 
 // RUTAS POST
 
-instructor.post('/insertarMaterial',middle,instruToken,instructorController.InsertarMateriales);
+instructor.post('/insertarMaterial',middle,validarDocumento,instruToken,instructorController.InsertarMateriales);
 
-instructor.post('/insertarHerramientas',middle,instruToken,instructorController.InsertarHerramientas);
+instructor.post('/insertarHerramientas',middle,validarDocumento,instruToken,instructorController.InsertarHerramientas);
 
-instructor.post('/insertarAmbientes',middle,instruToken,instructorController.InsertarAmbientes);
+instructor.post('/insertarAmbientes',middle,validarDocumento,instruToken,instructorController.InsertarAmbientes);
 
-instructor.post('/insertarComputador',middle,instruToken,instructorController.InsertarComputador);
+instructor.post('/insertarComputador',middle,validarDocumento,instruToken,instructorController.InsertarComputador);
 
-instructor.post('/reportesAula',middle,instruToken,instructorController.reporteAulas);
+instructor.post('/reportesAula',middle,validarDocumento,instruToken,instructorController.reporteAulas);
 
-instructor.post('/reportesPc',middle,instruToken,instructorController.reportePc);
+instructor.post('/reportesPc',middle,validarDocumento,instruToken,instructorController.reportePc);
 
 
 
