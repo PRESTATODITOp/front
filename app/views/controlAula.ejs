@@ -39,6 +39,7 @@
       <div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
+          <form id="reportes-aula" action="/reportesAula" method="post">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Agregue una observacion</h5>
@@ -46,7 +47,6 @@
 
             <!-- texto de ambientes -->
             <div class="contenedor-formulario">
-              <form action="/reportesAula" method="post" onsubmit="validarFormulario(e)">
                 <input type="number" class="items"  placeholder="a" id="documento1" name="DOCUMENTO" required> 
                 <label for="" class="label">N° de DOCUMENTO</label>
             </div>
@@ -61,6 +61,7 @@
               </div>
             </div>
           </div>
+        <form>
         </div>
       </div>
     </div>
@@ -96,6 +97,39 @@
            </div> -->
      <!--boton para ingresar al modal -->
   </div>
+  <script>
+    document.getElementById('reportes-aula').addEventListener('submit', function (event) {
+             event.preventDefault();
+             var form = event.target;
+ 
+             if (form.checkValidity()) {
+                 Swal.fire({
+                     title: '¿Desea registrar este usuario?',
+                     icon: 'question',
+                     showCancelButton: true,
+                     confirmButtonText: 'Aceptar',
+                     cancelButtonText: 'Cancelar'
+                 }).then(function (result) {
+                     if (result.value) {
+                         Swal.fire({
+                             title: 'Se ha registrado al usuario de manera exitosa',
+                             icon: 'success',
+                             confirmButtonText: 'Aceptar'
+                         }).then(function () {
+                             form.submit();
+                         });
+                     }
+                 });
+             } else {
+                 Swal.fire({
+                     title: 'Debe llenar todos los campos para registrar a un usuario',
+                     icon: 'warning',
+                     confirmButtonText: 'Aceptar'
+                 });
+             }
+         });
+ </script>
+
 </body>
 <script src="/resources/js/iconos.js"></script>
 </html>

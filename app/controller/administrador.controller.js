@@ -5,6 +5,11 @@ import fetch from "node-fetch";
 const rolAdmin = (req, res) => {
 res.render('rol.ejs', { errorr: req.query.errorr });  
 };
+
+const devolucionInsumos = (req, res) => {
+  res.render('devolucionInsumos.ejs');
+  
+};
   
   // Cuando el documento está listo, se ejecuta la función de devolución de llamada.
   const validarRol = (req, res) => {
@@ -91,7 +96,8 @@ res.render('rol.ejs', { errorr: req.query.errorr });
     rolAdmin,
     validarRol,
     solicitud,
-    usuariosRegistrados
+    usuariosRegistrados,
+    devolucionInsumos
   };
   
   

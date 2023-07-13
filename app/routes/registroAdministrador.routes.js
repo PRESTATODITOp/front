@@ -5,8 +5,8 @@ import { registroAdministradorController } from "../controller/registroAdministr
 const router = Router();
 
 
-router.get('/registroAdministrador',middle,admiToken,registroAdministradorController.registroAdministrador);
 router.post('/registrarAdministrador',middle,admiToken, registroAdministradorController.registrarAdmi);
+router.get('/registroAdministrador',middle,admiToken, registroAdministradorController.registroAdministrador);
 
 
 

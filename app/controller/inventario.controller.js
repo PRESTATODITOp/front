@@ -113,9 +113,6 @@ const herraAdmin= async (req, res) => {
             })
             .catch(err => console.error("error en peticion" + err))
   
-        res.render('herraAdmin', {
-            "datos": datos
-        });
   
     } catch (error) {
         res.redirect("/");
@@ -123,6 +120,11 @@ const herraAdmin= async (req, res) => {
   
   
   };
+
+
+//REGISTROS 
+
+
 
 
   export const inventarioController = {
