@@ -9,6 +9,7 @@ administrador.post('/registroRol',middle,admiToken,administradorController.valid
 administrador.get('/registroSolicitud',middle,admiToken,administradorController.solicitud)
 administrador.get('/usuariosRegistrados',middle,admiToken,administradorController.usuariosRegistrados);
 administrador.get('/devolucionInsumos',middle,admiToken,administradorController.devolucionInsumos);
+administrador.get('/insumosNoDevueltos',middle,admiToken,administradorController.insumosNoDevueltos);
 
 
 

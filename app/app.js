@@ -15,14 +15,7 @@ import coordi from './routes/coordinador.routes.js';
 import instructor from './routes/instructor.routes.js';
 import login from './routes/login.routes.js';
 import inventario from './routes/inventario.routes.js';
-import registroAdministrador from './routes/registroAdministrador.routes.js';
-import registroAprendiz from './routes/registroAprendiz.routes.js';
-import registroInstructor from './routes/registroInstructor.routes.js';
-import registroCoordinador from './routes/registroCoordinador.routes.js';
-import registroAmbiente from './routes/registroAmbiente.routes.js';
-import registroComputador from './routes/registroComputador.routes.js';
-import registroHerramienta from './routes/registroHerramienta.routes.js';
-import registroMaterial from './routes/registroMaterial.routes.js';
+import registroUsuarios from './routes/registroUsuarios.routes.js';
 
 
 // const router = Router();
@@ -54,14 +47,7 @@ app.use('/', aprendiz);
 app.use('/', instructor);
 app.use('/', login);
 app.use('/', inventario);
-app.use('/', registroAprendiz);
-app.use('/', registroAdministrador);
-app.use('/', registroInstructor);
-app.use('/', registroCoordinador);
-app.use('/', registroAmbiente);
-app.use('/', registroComputador);
-app.use('/', registroHerramienta);
-app.use('/', registroMaterial);
+app.use('/', registroUsuarios);
 // app.use('/', registrosUsers);
 
 

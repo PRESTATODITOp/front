@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/usuariosRegistrados.css">
+    <%- include('./partials/boostrap.ejs') %> 
+    <title>Usuarios registrados</title>
+</head>
+
+<body>
+
+  <%- include('./partials/administrador.ejs') %>
+
+
+
+  <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control mr-3" placeholder="Buscar usuario" id="search-input">
+            <div class="input-group-append">
+              <button class="btn btn-outline-success" type="button" id="search-button">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="table table-borderless" id="tabla-usuario">
+                <thead>
+                    <tr class="bg-success">
+                      <th>ID</th>
+                      <th>PRODUCTO</th>
+                      <th>CANTIDAD</th>
+                      <th>RESPONSABLE</th>
+                      <th>FECHA DE ENTREGA</th>
+                      <th>ESTADO</th>
+                      <th>CONFIRMACION</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% datosPrestamo.forEach((elemento,index)=>{ %>
+                      <tr>    
+                        <td><%= elemento.ID_PRESTAMOS %></td>
+                        <% if (datosReserva[index]) { %>
+                          <td><%= datosReserva[index].NOMBRE_INSUMO %></td>
+                          <td><%= elemento.CANTIDAD %></td>
+                        <% } else { %>
+                          <td></td>
+                          <td></td>
+                        <% } %>
+                        <% if (datosPrestamo[index]) { %>
+                          <td><%= elemento.ID_USUARIO %></td>
+                          <td><%= elemento.FINAL_PRESTAMO %></td>
+                        <% } else { %>
+                          <td></td>
+                          <td></td>
+                        <% } %>
+                        <td>por entregar</td>
+                    <td><button>Entregado</button></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>                  
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>  
+</body>
+<%- include('./partials/footer.ejs') %>
+<script src="/resources/js/usuariosRegistrados.js"></script>
+</html>
+<!--V3-->

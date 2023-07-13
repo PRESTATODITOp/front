@@ -10,6 +10,31 @@ const devolucionInsumos = (req, res) => {
   res.render('devolucionInsumos.ejs');
   
 };
+
+const insumosNoDevueltos = async (req, res) => {
+  try {
+    const rutaRegistro = "http://localhost:3000/api/reserva";
+    const rutaPrestamo = "http://localhost:3000/api/prestamos";
+
+    const opciones = {
+      method: "GET",
+    };
+
+    const [datosReserva, datosPrestamo] = await Promise.all([
+      fetch(rutaRegistro, opciones).then(response => response.json()),
+      fetch(rutaPrestamo, opciones).then(response => response.json())
+    ]);
+
+    res.render('insumosNoDevueltos', {
+      datosReserva: datosReserva[0],
+     datosPrestamo:datosPrestamo[0]
+    });
+  } catch (error) {
+    console.error(error);
+    res.redirect("/");
+  }
+  
+};
   
   // Cuando el documento está listo, se ejecuta la función de devolución de llamada.
   const validarRol = (req, res) => {
@@ -97,7 +122,8 @@ const devolucionInsumos = (req, res) => {
     validarRol,
     solicitud,
     usuariosRegistrados,
-    devolucionInsumos
+    devolucionInsumos,
+    insumosNoDevueltos
   };
   
   

@@ -3,100 +3,59 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Devolución de Insumos</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/resources/css/insumos.css">
+    <link rel="stylesheet" href="/resources/css/usuariosRegistrados.css">
     <%- include('./partials/boostrap.ejs') %> 
-
+    <title>Usuarios registrados</title>
 </head>
 
+<body>
 
-<%- include('./partials/administrador.ejs') %>
+  <%- include('./partials/administrador.ejs') %>
 
-<div class="container">
-    <h1 class="text-center bg-success py-4 text-white rounded-top rounded-bottom mx-auto mt-4"
-        style="width: fit-content; margin-bottom: 0;">DEVOLUCION DE INSUMOS</h1>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="rounded py-2 px-3 mt-4 bg-success">
-                <h2 class="text-white text-center mb-0">INSUMOS NO DEVUELTOS</h2>
-                <div class="bg-success rounded py-2" id="success-elemento">
-                    <div class=" mt-4" style="border: 1px solid black;">
-                        <div class="d-flex justify-content-between px-3">
-                            <h5 class="mx-2 text-dark border-right-custom border-black-custom mr-2 pr-2" style="border-right-width: 2px; width: 30%;">Producto</h5>
-                            <div style="border-right: 1px solid black; width: 1%;"></div>
-                            <h5 class="mx-2 text-dark border-right-custom border-black-custom mr-2 pr-2" style="border-right-width: 2px; width: 20%;">Cantidad</h5>
-                            <div style="border-right: 1px solid black; width: 1%;"></div>
-                            <h5 class="mx-2 text-dark border-right-custom border-black-custom mr-2 pr-2" style="border-right-width: 2px; width: 30%;">Responsable</h5>
-                            <div style="border-right: 1px solid black; width: 1%;"></div>
-                            <h5 class="mx-2 text-dark" style="width: 15%;">Estado</h5>
-                        </div>
-                    </div>
-        
-                    <div class="bg-light rounded my-3 py-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mx-2 col-producto" style="width: 30%;">Nombre del producto</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Cantidad o medidas</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Nombre Responsable</p>
-                            <div class="mx-2 col-estado d-flex align-items-start">
-                                <label class="checkbox-inline mb-0" style="vertical-align: middle;">
-                                    <input type="checkbox" value="">
-                                </label>
-                                <span class="ml-2" >Entregado</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light rounded my-3 py-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mx-2 col-producto" style="width: 30%;">Nombre del producto</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Cantidad o medidas</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Nombre Responsable</p>
-                            <div class="mx-2 col-estado d-flex align-items-start">
-                                <label class="checkbox-inline mb-0" style="vertical-align: middle;">
-                                    <input type="checkbox" value="">
-                                </label>
-                                <span class="ml-2" >Entregado</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light rounded my-3 py-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mx-2 col-producto" style="width: 30%;">Nombre del producto</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Cantidad o medidas</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Nombre Responsable</p>
-                            <div class="mx-2 col-estado d-flex align-items-start">
-                                <label class="checkbox-inline mb-0" style="vertical-align: middle;">
-                                    <input type="checkbox" value="">
-                                </label>
-                                <span class="ml-2" >Entregado</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light rounded my-3 py-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mx-2 col-producto" style="width: 30%;">Nombre del producto</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Cantidad o medidas</p>
-                            <p class="mx-2 col-cantidad" style="width: 20%;">Nombre Responsable</p>
-                            <div class="mx-2 col-estado d-flex align-items-start">
-                                <label class="checkbox-inline mb-0" style="vertical-align: middle;">
-                                    <input type="checkbox" value="">
-                                </label>
-                                <span class="ml-2" >Entregado</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+  <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control mr-3" placeholder="Buscar usuario" id="search-input">
+            <div class="input-group-append">
+              <button class="btn btn-outline-success" type="button" id="search-button">
+                <i class="fas fa-search"></i>
+              </button>
             </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="table table-borderless" id="tabla-usuario">
+              <thead>
+                <tr class="bg-success">
+                  <th>ID</th>
+                  <th>PRODUCTO</th>
+                  <th>CANTIDAD</th>
+                  <th>RESPONSABLE</th>
+                  <th>ESTADO</th>
+                  <th>FECHA DEVILUCION</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <th>1</th>
+                <th>prestamo</th>
+                <th>2</th>
+                <th>1018226843</th>
+                <th>devuelto</th>
+                <th>00/00/00</th>
+                
+              </tbody>
+            </table>
+          </div>
         </div>
-
-    </div>
-</div>
-
-
+      </div>
+    </div>  
 </body>
 <%- include('./partials/footer.ejs') %>
+<script src="/resources/js/usuariosRegistrados.js"></script>
 </html>
 <!--V3-->
