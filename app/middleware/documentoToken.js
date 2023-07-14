@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-
+import Swal from 'sweetalert2';
 
 const validarDocumento = (req, res, next) => {
     const numeroDocumentoUsuario = req.body.DOCUMENTO;
@@ -10,12 +10,15 @@ console.log(verificarToken);
         console.log(numeroDocumentoUsuario);
         console.log(verificarToken.ID_USUARIO);
         next();
-    } else{
-        return res.status(400).json({ error: 'El número de documento ingresado no es válido' });
+    } else {
+        // Mostrar alerta de error
+        const mensajeError = "El número de documento ingresado no es válido, por favor verificar que sea el correcto";
+        res.send(`<script>alert("${mensajeError}"); window.location.replace('/prestamoPcInstructor?alerta=3');// Reemplazar con la ruta deseada</script>`);
+       
+      }
 
-    }
-    
-  
+
+
   };
 
   export default validarDocumento;

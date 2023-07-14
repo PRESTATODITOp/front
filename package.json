@@ -34,7 +34,8 @@
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
     "pdfkit-table": "^0.1.99",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.7.16"
   },
   "devDependencies": {
     "esm": "^3.2.25",

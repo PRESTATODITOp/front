@@ -13,7 +13,7 @@ const admiToken = (req, res, next) => {
       // Si el token es válido y la verificación es exitosa continua
       next();
 
-    } 
+    }
     
   } catch (error) {
     console.log(error);
