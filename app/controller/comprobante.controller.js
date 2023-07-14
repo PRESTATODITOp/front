@@ -1,8 +1,9 @@
-import  path  from 'path';
+import path from 'path';
 import axios from "axios";
 import excel from "exceljs"
 import PDFDocument from "pdfkit-table";
 import moment from 'moment-timezone';
+import jwt from "jsonwebtoken";
 
 
 
@@ -24,7 +25,7 @@ const generarPdf = async (req, res) => {
     const logoHeight = 50;
     const logoWidth = 50;
     const __dirname = path.resolve()
-    const imagePath = path.resolve(path.join(__dirname, 'public', 'img', 'logoSena.png')) ;
+    const imagePath = path.resolve(path.join(__dirname, 'public', 'img', 'logoSena.png'));
 
     const pageWidth = doc.page.width;
     const pageHeight = doc.page.height;
@@ -58,12 +59,26 @@ const generarPdf = async (req, res) => {
     // Agregar la tabla al documento con un tamaño de letra más pequeño
     await doc.table(table, { width: 500, prepareHeader: () => doc.font('Helvetica-Bold').fontSize(10), prepareRow: () => doc.font('Helvetica').fontSize(10) });
 
-    // Agregar el pie de página
-    const generador = 'prestaTodito';
-    doc.fontSize(10).text(`Generado por: ${generador}`);
-    doc.fontSize(12);
+    // Obtener el nombre del usuario generado por la API
+    const validarToken = jwt.verify(req.cookies.PRESTATODITO, process.env.SECRET_KEY);
+    let ruta = `http://localhost:3000/api/usuario/${validarToken.ID_USUARIO}`;
+    let option = {
+      method: "GET",
+    };
+    let nombres = '';
+    await fetch(ruta, option)
+      .then((response) => response.json())
+      .then((data) => {
+        nombres = `${data[0][0].NOMBRE} ${data[0][0].APELLIDO}`;
+      })
+      .catch((err) => console.error("error en peticion" + err));
+
+    // Agregar los detalles en el pie de página
     const fechaActual = moment().tz('America/Bogota').format('YYYY-MM-DD h:mm:ss A');
-    doc.text('Fecha de generación de reporte: ' + fechaActual, 10, 20);
+    const generadoPor = `Generado por: ${nombres}`;
+    doc.fontSize(10).text(fechaActual, { align: 'center', opacity: 0.5 });
+    doc.fontSize(10).text(generadoPor, { align: 'center', opacity: 0.5 });
+
     // Finalizar el PDF
     doc.end();
   } catch (error) {
@@ -72,6 +87,7 @@ const generarPdf = async (req, res) => {
     res.status(500).send('Error al generar el PDF');
   }
 };
+
 
 const imprimirPDFC = async (req, res) => {
   try {
@@ -91,7 +107,7 @@ const imprimirPDFC = async (req, res) => {
     const logoHeight = 50;
     const logoWidth = 50;
     const __dirname = path.resolve()
-    const imagePath = path.resolve(path.join(__dirname, 'public', 'img', 'logoSena.png')) ;
+    const imagePath = path.resolve(path.join(__dirname, 'public', 'img', 'logoSena.png'));
 
     const pageWidth = doc.page.width;
     const pageHeight = doc.page.height;
@@ -141,7 +157,7 @@ const imprimirPDFC = async (req, res) => {
 };
 
 
-  
+
 const generarexcel = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
@@ -152,17 +168,17 @@ const generarexcel = async (req, res) => {
     const workbook = new excel.Workbook();
     const worksheet = workbook.addWorksheet('Material');
 
-     // Mostrar información por consola
-     console.log('Información del material:');
-     materialData.forEach((material) => {
-       console.log(`ID: ${material.ID_MATERIAL}`);
-       console.log(`Nombre del material: ${material.NOMBRE}`);
-       console.log(`Tipo de material: ${material.TIPO}`);
-       console.log(`Estado del material: ${material.ESTADO}`);
-       console.log(`Cantidad del material: ${material.CANTIDAD}`);
-       console.log(`Color del material: ${material.COLOR}`);
-       console.log(`Medida del material: ${material.MEDIDA}`);
-     });
+    // Mostrar información por consola
+    console.log('Información del material:');
+    materialData.forEach((material) => {
+      console.log(`ID: ${material.ID_MATERIAL}`);
+      console.log(`Nombre del material: ${material.NOMBRE}`);
+      console.log(`Tipo de material: ${material.TIPO}`);
+      console.log(`Estado del material: ${material.ESTADO}`);
+      console.log(`Cantidad del material: ${material.CANTIDAD}`);
+      console.log(`Color del material: ${material.COLOR}`);
+      console.log(`Medida del material: ${material.MEDIDA}`);
+    });
 
     // Agregar encabezados de columna
     worksheet.columns = [
@@ -247,13 +263,13 @@ const imprimirEXCELC = async (req, res) => {
     res.status(500).send('Error al generar el archivo Excel');
   }
 };
-  
-  export const comprobanteController = {
-    generarPdf,
-    generarexcel,
-    imprimirPDFC,
-    imprimirEXCELC
-  };
+
+export const comprobanteController = {
+  generarPdf,
+  generarexcel,
+  imprimirPDFC,
+  imprimirEXCELC
+};
 
 
-  
+

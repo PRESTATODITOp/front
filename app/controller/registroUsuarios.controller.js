@@ -90,27 +90,22 @@ const registrarAlumno = async (req, res) => {
         body: JSON.stringify(data)
         
       };
-      console.log(data);
-      const response = await fetch(url, options)
-      .then(response => response.json())
-      .then(data =>{
-        console.log(data);
-      })
-      .catch(error => console.log(error))
-  
-      // Inspeccionar la respuesta del servidor
-     
-  
-      if (data && data > 0) {
+
+      const response = await fetch(url, options);
+      const responseData = await response.json();
+
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/rol");
       } else {
-        // Manejar la respuesta del servidor cuando si es valida
-        return res.redirect("/rol?alerta=1");
+          // Error en el registro
+          res.redirect("/rol");
       }
-    } catch (error) {
+  } catch (error) {
       console.error(error);
-       // Manejar la respuesta del servidor cuando no es válida
-      return res.redirect("/?alerta=2");
-    }
+      // Error en la petición
+      res.redirect("/?alerta=2");
+  }
   };
 
 const registrarCoordi = async (req, res) => {
@@ -141,27 +136,21 @@ const registrarCoordi = async (req, res) => {
         body: JSON.stringify(data)
         
       };
-      console.log(data);
-      const response = await fetch(url, options)
-      .then(response => response.json())
-      .then(data =>{
-        console.log(data);
-      })
-      .catch(error => console.log(error))
-  
-      // Inspeccionar la respuesta del servidor
-     
-  
-      if (data && data > 0) {
+      const response = await fetch(url, options);
+      const responseData = await response.json();
+
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/rol");
       } else {
-        // Manejar la respuesta del servidor cuando si es valida
-        return res.redirect("/rol?alerta=1");
+          // Error en el registro
+          res.redirect("/rol");
       }
-    } catch (error) {
+  } catch (error) {
       console.error(error);
-       // Manejar la respuesta del servidor cuando no es válida
-      return res.redirect("/?alerta=2");
-    }
+      // Error en la petición
+      res.redirect("/?alerta=2");
+  }
   };
 
   const registroi = async (req, res) => {
@@ -193,27 +182,21 @@ const registrarCoordi = async (req, res) => {
         body: JSON.stringify(data)
         
       };
-      console.log(data);
-      const response = await fetch(url, options)
-      .then(response => response.json())
-      .then(data =>{
-        console.log(data);
-      })
-      .catch(error => console.log(error))
-  
-      // Inspeccionar la respuesta del servidor
-     
-  
-      if (data && data > 0) {
+      const response = await fetch(url, options);
+      const responseData = await response.json();
+
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/rol");
       } else {
-        // Manejar la respuesta del servidor cuando si es valida
-        return res.redirect("/rol?alerta=1");
+          // Error en el registro
+          res.redirect("/rol");
       }
-    } catch (error) {
+  } catch (error) {
       console.error(error);
-       // Manejar la respuesta del servidor cuando no es válida
-      return res.redirect("/?alerta=2");
-    }
+      // Error en la petición
+      res.redirect("/?alerta=2");
+  }
   };
 
 
