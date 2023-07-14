@@ -10,7 +10,7 @@ import jwt from "jsonwebtoken";
 const generarPdf = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.ENDPOINT + '/api/material');
+    const response = await axios.get(process.env.ENDPOINT + "/api/material");
     const materialData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo documento PDF
@@ -92,7 +92,7 @@ const generarPdf = async (req, res) => {
 const imprimirPDFC = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.ENDPOINT + '/api/ambientes');
+    const response = await axios.get(process.env.ENDPOINT + "/api/material");
     const ambienteData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo documento PDF
@@ -161,7 +161,7 @@ const imprimirPDFC = async (req, res) => {
 const generarexcel = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.ENDPOINT + '/api/material');
+    const response = await axios.get(process.env.ENDPOINT + "/api/material");
     const materialData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo libro de Excel
@@ -221,7 +221,7 @@ const generarexcel = async (req, res) => {
 const imprimirEXCELC = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.ENDPOINT + '/api/ambientes');
+    const response = await axios.get(process.env.ENDPOINT + "/api/material");
     const materialData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo libro de Excel
