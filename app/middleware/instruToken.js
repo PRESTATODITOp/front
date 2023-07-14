@@ -13,7 +13,9 @@ const instruToken = (req, res, next) => {
       // Si el token es válido y la verificación es exitosa continua
       next();
 
-    } 
+    } else{
+      return res.redirect('/denegado');
+    }
     
   } catch (error) {
     console.log(error);
