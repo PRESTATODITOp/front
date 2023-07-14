@@ -9,8 +9,8 @@ const reportes = (req, res) => {
 //FUNCIONES VISTA SEGUIMIENTO
 const segumiento = async (req, res) => {
   try {
-    const rutaReserva = "http://localhost:3000/api/reserva";
-    const rutaPrestamos = "http://localhost:3000/api/prestamos";
+    const rutaReserva = process.env.ENDPOINT + "/api/reserva";
+    const rutaPrestamos = process.env.ENDPOINT + "/api/prestamos";
 
     const opciones = {
       method: "GET",
@@ -36,7 +36,7 @@ const segumiento = async (req, res) => {
 const aprobar = async (req, res) => {
   let datosReserva = {};
   try {
-    let ruta = "http://localhost:3000/api/reserva";
+    let ruta = process.env.ENDPOINT + "/api/reserva";
     let option = {
       method: "GET",
     };
@@ -80,7 +80,7 @@ const aceptar = async (req, res) => {
     id_usuario: idUsuario
   }
   try {
-    let ruta = "http://localhost:3000/api/estado/" + idReserva;
+    let ruta = process.env.ENDPOINT + "/api/estado/" + idReserva;
     let option = {
       method: "PATCH",
       headers: {
@@ -130,7 +130,7 @@ const rechazar = async (req, res) => {
     id_usuario: idUsuario
   }
   try {
-    let ruta = "http://localhost:3000/api/estado/" + idReserva;
+    let ruta = process.env.ENDPOINT + "/api/estado/" + idReserva;
     let option = {
       method: "PATCH",
       headers: {

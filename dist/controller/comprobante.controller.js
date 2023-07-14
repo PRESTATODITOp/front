@@ -23,7 +23,7 @@ var generarPdf = /*#__PURE__*/function () {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return _axios["default"].get('http://localhost:3000/api/material');
+          return _axios["default"].get(process.env.ENDPOINT + '/api/material');
         case 3:
           response = _context.sent;
           materialData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -81,7 +81,7 @@ var generarPdf = /*#__PURE__*/function () {
         case 24:
           // Obtener el nombre del usuario generado por la API
           validarToken = _jsonwebtoken["default"].verify(req.cookies.PRESTATODITO, process.env.SECRET_KEY);
-          ruta = "http://localhost:3000/api/usuario/".concat(validarToken.ID_USUARIO);
+          ruta = process.env.ENDPOINT + "/api/usuario/".concat(validarToken.ID_USUARIO);
           option = {
             method: "GET"
           };
@@ -135,7 +135,7 @@ var imprimirPDFC = /*#__PURE__*/function () {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return _axios["default"].get('http://localhost:3000/api/ambientes');
+          return _axios["default"].get(process.env.ENDPOINT + '/api/ambientes');
         case 3:
           response = _context2.sent;
           ambienteData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -227,7 +227,7 @@ var generarexcel = /*#__PURE__*/function () {
         case 0:
           _context3.prev = 0;
           _context3.next = 3;
-          return _axios["default"].get('http://localhost:3000/api/material');
+          return _axios["default"].get(process.env.ENDPOINT + '/api/material');
         case 3:
           response = _context3.sent;
           materialData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -323,7 +323,7 @@ var imprimirEXCELC = /*#__PURE__*/function () {
         case 0:
           _context4.prev = 0;
           _context4.next = 3;
-          return _axios["default"].get('http://localhost:3000/api/ambientes');
+          return _axios["default"].get(process.env.ENDPOINT + '/api/ambientes');
         case 3:
           response = _context4.sent;
           materialData = response.data[0]; // Obtener el primer elemento del arreglo

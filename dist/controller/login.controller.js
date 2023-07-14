@@ -21,7 +21,7 @@ var validacionLogin = /*#__PURE__*/function () {
             id_usuario: req.body.id_usuario,
             contrasena: req.body.contrasena
           };
-          url = "http://localhost:3000/api/consulta";
+          url = process.env.ENDPOINT + "/api/consulta";
           options = {
             method: "POST",
             headers: {

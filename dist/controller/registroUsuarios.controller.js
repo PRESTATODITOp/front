@@ -95,7 +95,7 @@ var registrarAdmi = /*#__PURE__*/function () {
             programa_formacion: "null",
             numero_ficha: "null"
           };
-          url = "http://localhost:3000/api/usuario";
+          url = process.env.ENDPOINT + "/api/usuario";
           options = {
             method: "POST",
             headers: {
@@ -158,7 +158,7 @@ var registrarAlumno = /*#__PURE__*/function () {
             contrasena: req.body.contrasena,
             id_rol: req.body.id_rol
           };
-          url = "http://localhost:3000/api/usuario";
+          url = process.env.ENDPOINT + "/api/usuario";
           options = {
             method: "POST",
             headers: {
@@ -219,7 +219,7 @@ var registrarCoordi = /*#__PURE__*/function () {
             genero: req.body.genero,
             contrasena: req.body.contrasena
           };
-          url = "http://localhost:3000/api/usuario";
+          url = process.env.ENDPOINT + "/api/usuario";
           options = {
             method: "POST",
             headers: {
@@ -282,7 +282,7 @@ var registroi = /*#__PURE__*/function () {
             genero: req.body.genero,
             contrasena: req.body.contrasena
           };
-          url = "http://localhost:3000/api/usuario";
+          url = process.env.ENDPOINT + "/api/usuario";
           options = {
             method: "POST",
             headers: {

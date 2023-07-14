@@ -35,7 +35,7 @@ const registrarAdmi = async (req, res) => {
             numero_ficha: "null"
         };
 
-        const url = "http://localhost:3000/api/usuario";
+        const url = process.env.ENDPOINT +"/api/usuario";
         const options = {
             method: "POST",
             headers: {
@@ -80,7 +80,7 @@ const registrarAlumno = async (req, res) => {
       id_rol: req.body.id_rol,
       };
   
-      const url = "http://localhost:3000/api/usuario";
+      const url = process.env.ENDPOINT +"/api/usuario";
       const options = {
         method: "POST",
         headers: {
@@ -126,7 +126,7 @@ const registrarCoordi = async (req, res) => {
       contrasena: req.body.contrasena
       };
   
-      const url = "http://localhost:3000/api/usuario";
+      const url = process.env.ENDPOINT +"/api/usuario";
       const options = {
         method: "POST",
         headers: {
@@ -172,7 +172,7 @@ const registrarCoordi = async (req, res) => {
         contrasena: req.body.contrasena,
       };
   
-      const url = "http://localhost:3000/api/usuario";
+      const url = process.env.ENDPOINT +"/api/usuario";
       const options = {
         method: "POST",
         headers: {

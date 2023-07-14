@@ -39,7 +39,7 @@ var actualizarEstado = /*#__PURE__*/function () {
             estado: estado
           };
           _context.prev = 5;
-          ruta = "http://localhost:3000/api/prestamo/" + idPrestamo;
+          ruta = process.env.ENDPOINT + "/api/prestamo/" + idPrestamo;
           option = {
             method: "PATCH",
             headers: {
@@ -79,8 +79,8 @@ var insumosNoDevueltos = /*#__PURE__*/function () {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          rutaRegistro = "http://localhost:3000/api/reserva";
-          rutaPrestamo = "http://localhost:3000/api/prestamos";
+          rutaRegistro = process.env.ENDPOINT + "/api/reserva";
+          rutaPrestamo = process.env.ENDPOINT + "/api/prestamos";
           opciones = {
             method: "GET"
           };
@@ -152,7 +152,7 @@ var solicitud = /*#__PURE__*/function () {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
-          rutaRegistro = "http://localhost:3000/api/reserva"; // const rutaNoti = "http://localhost:3000/api/notificacion";
+          rutaRegistro = process.env.ENDPOINT + "/api/reserva";
           opciones = {
             method: "GET"
           };
@@ -166,7 +166,6 @@ var solicitud = /*#__PURE__*/function () {
           datosReserva = _context3.sent;
           res.render('registroSolicitud', {
             datosReserva: datosReserva[0] // Datos existentes
-            // datosMaterialPost: datosMaterialPost // Datos insertados
           });
           _context3.next = 16;
           break;
@@ -192,7 +191,7 @@ var usuariosRegistrados = /*#__PURE__*/function () {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _context4.prev = 0;
-          ruta = "http://localhost:3000/api/usuario";
+          ruta = process.env.ENDPOINT + "/api/usuario";
           option = {
             method: "GET"
           };

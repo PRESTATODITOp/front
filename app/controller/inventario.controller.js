@@ -10,7 +10,7 @@ const materiales = async (req, res) => {
     try {
   
   
-      let ruta = "http://localhost:3000/api/material";
+      let ruta = process.env.ENDPOINT +"/api/material";
       let option = {
         method: "GET",
       }
@@ -44,7 +44,7 @@ const pcAdmin = async (req, res) => {
     try {
         
   
-        let ruta = "http://localhost:3000/api/computador";
+        let ruta = process.env.ENDPOINT +"/api/computador";
         let option = {
             method: "GET",
         }
@@ -73,7 +73,7 @@ const ambienteAdmin = async (req, res) => {
     try {
         
        
-        let ruta = "http://localhost:3000/api/ambientes";
+        let ruta = process.env.ENDPOINT +"/api/ambientes";
         let option = {
             method: "GET",
         }
@@ -101,7 +101,7 @@ const herraAdmin= async (req, res) => {
  
     try {
         
-        let ruta = "http://localhost:3000/api/herramientas";
+        let ruta = process.env.ENDPOINT +"/api/herramientas";
         let option = {
             method: "GET",
         }
@@ -161,7 +161,7 @@ const registroM = async (req, res) => {
     medidas: req.body.medidas,
     };
 
-    const url = "http://localhost:3000/api/material";
+    const url = process.env.ENDPOINT +"/api/material";
     const options = {
       method: "POST",
       headers: {
@@ -197,7 +197,7 @@ const registroC = async (req, res) => {
     mouse: req.body.mouse
     };
 
-    const url = "http://localhost:3000/api/computador";
+    const url = process.env.ENDPOINT +"/api/computador";
     const options = {
       method: "POST",
       headers: {
@@ -236,7 +236,7 @@ const registroA = async (req, res) => {
 
     };
 
-    const url = "http://localhost:3000/api/ambientes";
+    const url = process.env.ENDPOINT +"/api/ambientes";
     const options = {
       method: "POST",
       headers: {
@@ -271,7 +271,7 @@ const registroH = async (req, res) => {
     color: req.body.color,
     };
 
-    const url = "http://localhost:3000/api/herramientas";
+    const url = process.env.ENDPOINT +"/api/herramientas";
     const options = {
       method: "POST",
       headers: {

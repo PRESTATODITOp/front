@@ -12,7 +12,7 @@ const controlCompu = (req, res) => {
 
 const formularioPC = async (req, res) => {
   try {
-    const rutaComputador ="http://localhost:3000/api/computador";
+    const rutaComputador = process.env.ENDPOINT +"/api/computador";
 
     // Realizar solicitud GET para obtener los datos existentes
     const getOptions = {
@@ -34,7 +34,7 @@ const formularioPC = async (req, res) => {
 const seguimientoA =  async (req, res) => {
   let datosReserva = {};
  try {
-   const rutaReserva = "http://localhost:3000/api/reserva";
+   const rutaReserva =  process.env.ENDPOINT +"/api/reserva";
   
    // Realizar solicitud GET para obtener los datos existentes
    const getOptions = {
@@ -76,7 +76,7 @@ const InsertarComputador = async (req, res) => {
       cantidad:"1"
     };
 
-    const url = "http://localhost:3000/api/insumosReserva";
+    const url =  process.env.ENDPOINT +"/api/insumosReserva";
     const options = {
       method: "POST",
       headers: {
@@ -119,7 +119,7 @@ const Insertareportepc = async (req, res) => {
       final_prestamo :"0000/00/00"
     };
 
-    const url = "http://localhost:3000/api/prestamos";
+    const url =  process.env.ENDPOINT +"/api/prestamos";
     const options = {
       method: "POST",
       headers: {

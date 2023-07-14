@@ -29,8 +29,8 @@ var segumiento = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          rutaReserva = "http://localhost:3000/api/reserva";
-          rutaPrestamos = "http://localhost:3000/api/prestamos";
+          rutaReserva = process.env.ENDPOINT + "/api/reserva";
+          rutaPrestamos = process.env.ENDPOINT + "/api/prestamos";
           opciones = {
             method: "GET"
           };
@@ -77,7 +77,7 @@ var aprobar = /*#__PURE__*/function () {
         case 0:
           datosReserva = {};
           _context2.prev = 1;
-          ruta = "http://localhost:3000/api/reserva";
+          ruta = process.env.ENDPOINT + "/api/reserva";
           option = {
             method: "GET"
           };
@@ -136,7 +136,7 @@ var aceptar = /*#__PURE__*/function () {
             id_usuario: idUsuario
           };
           _context3.prev = 5;
-          ruta = "http://localhost:3000/api/estado/" + idReserva;
+          ruta = process.env.ENDPOINT + "/api/estado/" + idReserva;
           option = {
             method: "PATCH",
             headers: {
@@ -200,7 +200,7 @@ var rechazar = /*#__PURE__*/function () {
             id_usuario: idUsuario
           };
           _context4.prev = 5;
-          ruta = "http://localhost:3000/api/estado/" + idReserva;
+          ruta = process.env.ENDPOINT + "/api/estado/" + idReserva;
           option = {
             method: "PATCH",
             headers: {

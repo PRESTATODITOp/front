@@ -26,7 +26,7 @@ var formularioPC = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          rutaComputador = "http://localhost:3000/api/computador"; // Realizar solicitud GET para obtener los datos existentes
+          rutaComputador = process.env.ENDPOINT + "/api/computador"; // Realizar solicitud GET para obtener los datos existentes
           getOptions = {
             method: "GET"
           };
@@ -67,7 +67,7 @@ var seguimientoA = /*#__PURE__*/function () {
         case 0:
           datosReserva = {};
           _context2.prev = 1;
-          rutaReserva = "http://localhost:3000/api/reserva"; // Realizar solicitud GET para obtener los datos existentes
+          rutaReserva = process.env.ENDPOINT + "/api/reserva"; // Realizar solicitud GET para obtener los datos existentes
           getOptions = {
             method: "GET"
           };
@@ -127,7 +127,7 @@ var InsertarComputador = /*#__PURE__*/function () {
             tipo_insumo: "computador",
             cantidad: "1"
           };
-          url = "http://localhost:3000/api/insumosReserva";
+          url = process.env.ENDPOINT + "/api/insumosReserva";
           options = {
             method: "POST",
             headers: {
@@ -186,7 +186,7 @@ var Insertareportepc = /*#__PURE__*/function () {
             fechaPrestamo: "00/00/00",
             final_prestamo: "0000/00/00"
           };
-          url = "http://localhost:3000/api/prestamos";
+          url = process.env.ENDPOINT + "/api/prestamos";
           options = {
             method: "POST",
             headers: {

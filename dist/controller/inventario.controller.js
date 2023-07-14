@@ -22,7 +22,7 @@ var materiales = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          ruta = "http://localhost:3000/api/material";
+          ruta = process.env.ENDPOINT + "/api/material";
           option = {
             method: "GET"
           };
@@ -64,7 +64,7 @@ var pcAdmin = /*#__PURE__*/function () {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          ruta = "http://localhost:3000/api/computador";
+          ruta = process.env.ENDPOINT + "/api/computador";
           option = {
             method: "GET"
           };
@@ -106,7 +106,7 @@ var ambienteAdmin = /*#__PURE__*/function () {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
-          ruta = "http://localhost:3000/api/ambientes";
+          ruta = process.env.ENDPOINT + "/api/ambientes";
           option = {
             method: "GET"
           };
@@ -148,7 +148,7 @@ var herraAdmin = /*#__PURE__*/function () {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _context4.prev = 0;
-          ruta = "http://localhost:3000/api/herramientas";
+          ruta = process.env.ENDPOINT + "/api/herramientas";
           option = {
             method: "GET"
           };
@@ -267,7 +267,7 @@ var registroM = /*#__PURE__*/function () {
             color: req.body.color,
             medidas: req.body.medidas
           };
-          url = "http://localhost:3000/api/material";
+          url = process.env.ENDPOINT + "/api/material";
           options = {
             method: "POST",
             headers: {
@@ -320,7 +320,7 @@ var registroC = /*#__PURE__*/function () {
             cargador: req.body.cargador,
             mouse: req.body.mouse
           };
-          url = "http://localhost:3000/api/computador";
+          url = process.env.ENDPOINT + "/api/computador";
           options = {
             method: "POST",
             headers: {
@@ -375,7 +375,7 @@ var registroA = /*#__PURE__*/function () {
             num_aprendices: req.body.num_aprendices,
             num_equipos: req.body.num_equipos
           };
-          url = "http://localhost:3000/api/ambientes";
+          url = process.env.ENDPOINT + "/api/ambientes";
           options = {
             method: "POST",
             headers: {
@@ -427,7 +427,7 @@ var registroH = /*#__PURE__*/function () {
             tipo: req.body.tipo,
             color: req.body.color
           };
-          url = "http://localhost:3000/api/herramientas";
+          url = process.env.ENDPOINT + "/api/herramientas";
           options = {
             method: "POST",
             headers: {

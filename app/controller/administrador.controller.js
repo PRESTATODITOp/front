@@ -20,7 +20,7 @@ const actualizarEstado = async (req, res) => {
   };
 
   try {
-    const ruta = "http://localhost:3000/api/prestamo/" + idPrestamo;
+    const ruta = process.env.ENDPOINT +"/api/prestamo/" + idPrestamo;
     const option = {
       method: "PATCH",
       headers: {
@@ -44,8 +44,8 @@ const actualizarEstado = async (req, res) => {
 
 const insumosNoDevueltos = async (req, res) => {
   try {
-    const rutaRegistro = "http://localhost:3000/api/reserva";
-    const rutaPrestamo = "http://localhost:3000/api/prestamos";
+    const rutaRegistro = process.env.ENDPOINT +"/api/reserva";
+    const rutaPrestamo = process.env.ENDPOINT +"/api/prestamos";
 
     const opciones = {
       method: "GET",
@@ -100,8 +100,8 @@ const validarRol = (req, res) => {
 
 const solicitud = async (req, res) => {
   try {
-    const rutaRegistro = "http://localhost:3000/api/reserva";
-    // const rutaNoti = "http://localhost:3000/api/notificacion";
+    const rutaRegistro = process.env.ENDPOINT +"/api/reserva";
+  
 
     const opciones = {
       method: "GET",
@@ -112,7 +112,7 @@ const solicitud = async (req, res) => {
 
     res.render('registroSolicitud', {
       datosReserva: datosReserva[0], // Datos existentes
-      // datosMaterialPost: datosMaterialPost // Datos insertados
+  
     });
   } catch (error) {
     console.error(error);
@@ -122,7 +122,7 @@ const solicitud = async (req, res) => {
 
 const usuariosRegistrados = async (req, res) => {
   try {
-    let ruta = "http://localhost:3000/api/usuario";
+    let ruta = process.env.ENDPOINT +"/api/usuario";
     let option = {
       method: "GET",
     };

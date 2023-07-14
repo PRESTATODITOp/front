@@ -48,7 +48,7 @@ var formularioComputador = /*#__PURE__*/function () {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          rutaComputador = "http://localhost:3000/api/computador"; // Realizar solicitud GET para obtener los datos existentes
+          rutaComputador = process.env.ENDPOINT + "/api/computador"; // Realizar solicitud GET para obtener los datos existentes
           getOptions = {
             method: "GET"
           };
@@ -88,7 +88,7 @@ var respuestaPrestamo = /*#__PURE__*/function () {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
-          rutaNotificacion = "http://localhost:3000/api/reserva"; // Realizar solicitud GET para obtener los datos existentes
+          rutaNotificacion = process.env.ENDPOINT + "/api/reserva"; // Realizar solicitud GET para obtener los datos existentes
           getOptions = {
             method: "GET"
           };
@@ -127,7 +127,7 @@ var formularioMateriales = /*#__PURE__*/function () {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _context4.prev = 0;
-          rutaMaterial = "http://localhost:3000/api/material"; // Realizar solicitud GET para obtener los datos existentes
+          rutaMaterial = process.env.ENDPOINT + "/api/material"; // Realizar solicitud GET para obtener los datos existentes
           getOptions = {
             method: "GET"
           };
@@ -167,7 +167,7 @@ var formularioAmbiente = /*#__PURE__*/function () {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
           _context5.prev = 0;
-          rutaAmbientes = "http://localhost:3000/api/ambientes";
+          rutaAmbientes = process.env.ENDPOINT + "/api/ambientes";
           opciones = {
             method: "GET"
           };
@@ -206,7 +206,7 @@ var formularioHerramientas = /*#__PURE__*/function () {
       while (1) switch (_context6.prev = _context6.next) {
         case 0:
           _context6.prev = 0;
-          rutaHerramienta = "http://localhost:3000/api/herramientas";
+          rutaHerramienta = process.env.ENDPOINT + "/api/herramientas";
           opciones = {
             method: "GET"
           };
@@ -259,7 +259,7 @@ var InsertarMateriales = /*#__PURE__*/function () {
             hora_res: req.body.HORA,
             tiempo_requerido: "00:00:00"
           };
-          url = "http://localhost:3000/api/insumosReserva";
+          url = process.env.ENDPOINT + "/api/insumosReserva";
           options = {
             method: "POST",
             headers: {
@@ -322,7 +322,7 @@ var InsertarHerramientas = /*#__PURE__*/function () {
             hora_res: req.body.HORA,
             tiempo_requerido: "00:00:00"
           }, _defineProperty(_data, "tipo_insumo", "herramienta"), _defineProperty(_data, "caracteristicas", ""), _data);
-          url = "http://localhost:3000/api/insumosReserva";
+          url = process.env.ENDPOINT + "/api/insumosReserva";
           options = {
             method: "POST",
             headers: {
@@ -386,7 +386,7 @@ var InsertarAmbientes = /*#__PURE__*/function () {
             tipo_insumo: "ambiente",
             caracteristicas: ""
           };
-          url = "http://localhost:3000/api/insumosReserva";
+          url = process.env.ENDPOINT + "/api/insumosReserva";
           options = {
             method: "POST",
             headers: {
@@ -450,7 +450,7 @@ var InsertarComputador = /*#__PURE__*/function () {
             tipo_insumo: "computador",
             cantidad: "1"
           };
-          url = "http://localhost:3000/api/insumosReserva";
+          url = process.env.ENDPOINT + "/api/insumosReserva";
           options = {
             method: "POST",
             headers: {
@@ -509,7 +509,7 @@ var reporteAulas = /*#__PURE__*/function () {
             fechaPrestamo: "00/00/00",
             final_prestamo: "0000/00/00"
           };
-          url = "http://localhost:3000/api/prestamos";
+          url = process.env.ENDPOINT + "/api/prestamos";
           options = {
             method: "POST",
             headers: {
