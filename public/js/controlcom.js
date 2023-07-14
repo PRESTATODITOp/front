@@ -1,4 +1,4 @@
-document.getElementById('reportes-aula').addEventListener('submit', function (event) {
+document.getElementById('formulario').addEventListener('submit', function (event) {
     event.preventDefault();
     var form = event.target;
 

@@ -101,20 +101,18 @@ const validarRol = (req, res) => {
 const solicitud = async (req, res) => {
   try {
     const rutaRegistro = "http://localhost:3000/api/reserva";
-    const rutaNoti = "http://localhost:3000/api/notificacion";
+    // const rutaNoti = "http://localhost:3000/api/notificacion";
 
     const opciones = {
       method: "GET",
     };
 
-    const [datosReserva, datosNoti] = await Promise.all([
-      fetch(rutaRegistro, opciones).then((response) => response.json()),
-      fetch(rutaNoti, opciones).then((response) => response.json()),
-    ]);
+    const getResponse = await fetch(rutaRegistro, opciones);
+    const datosReserva = await getResponse.json();
 
-    res.render("registroSolicitud", {
-      datosReserva: datosReserva[0],
-      datosNoti: datosNoti[0],
+    res.render('registroSolicitud', {
+      datosReserva: datosReserva[0], // Datos existentes
+      // datosMaterialPost: datosMaterialPost // Datos insertados
     });
   } catch (error) {
     console.error(error);

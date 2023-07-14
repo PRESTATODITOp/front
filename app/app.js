@@ -21,12 +21,13 @@ import registroUsuarios from './routes/registroUsuarios.routes.js';
 // const router = Router();
 dotenv.config();
 const app = express();
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+const __dirname = path.resolve();
+
 
 //configuracion
 app.set("port", process.env.PORT || 9999);
-app.set("views", path.join(__dirname, "views"));
+app.set("views",path.resolve(path.join(__dirname, "app", "views")));
+//app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use('/resources', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -14,7 +14,7 @@ const instruToken = (req, res, next) => {
       next();
 
     } else{
-      return res.redirect('/denegado');
+      return res.redirect('/delete');
     }
     
   } catch (error) {

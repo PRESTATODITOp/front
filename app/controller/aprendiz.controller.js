@@ -110,11 +110,13 @@ const InsertarComputador = async (req, res) => {
 };
 
 const Insertareportepc = async (req, res) => {
-
+  
   try {
     let data = {
-      id_usuario: req.body.id_usuario,
-      observaciones: req.body.observaciones,
+      id_usuario: req.body.DOCUMENTO,
+      observaciones : req.body.OBSERVACIONES,
+      fechaPrestamo:"00/00/00",
+      final_prestamo :"0000/00/00"
     };
 
     const url = "http://localhost:3000/api/prestamos";
@@ -123,20 +125,20 @@ const Insertareportepc = async (req, res) => {
       headers: {
         "Content-Type": "application/json"
       },
-
+      
       body: JSON.stringify(data)
-
+      
     };
     console.log(data);
     const response = await fetch(url, options)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => console.log(error))
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data);
+    })
+    .catch(error => console.log(error))
 
     // Inspeccionar la respuesta del servidor
-
+   
 
     if (data && data > 0) {
     } else {
@@ -145,7 +147,7 @@ const Insertareportepc = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    // Manejar la respuesta del servidor cuando no es válida
+     // Manejar la respuesta del servidor cuando no es válida
     return res.redirect("/?alerta=2");
   }
 };

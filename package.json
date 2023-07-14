@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Proyecto de prestamo insumos ",
   "main": "app/index.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "babel app --out-dir dist",
+    "start": "set NODE_ENV=production& node dist/index.js",
+    "install": "npm i -D @babel/plugin-transform-runtime"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,12 @@
     "sweetalert2": "^11.7.16"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6",
+    "@babel/plugin-transform-runtime": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
     "esm": "^3.2.25",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.22"
   }
 }

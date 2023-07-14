@@ -13,7 +13,7 @@ aprendiz.get('/prestamoPC2',middle,aprenToken,aprendizController.formularioPC);
 
 aprendiz.get('/seguimientoA',middle,aprenToken,aprendizController.seguimientoA)
 
-aprendiz.post('/insertareporte',validarDocumento,aprenToken,aprendizController.Insertareportepc);
+aprendiz.post('/insertareportepc',middle,validarDocumento,aprenToken,aprendizController.Insertareportepc);
 
 aprendiz.post('/insertarComputadores',middle,validarDocumento,aprenToken,aprendizController.InsertarComputador);
 

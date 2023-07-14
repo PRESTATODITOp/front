@@ -1,0 +1,6 @@
+// configurar el babel
+{
+"presets": [
+    "@babel/env"
+]
+}

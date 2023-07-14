@@ -351,48 +351,7 @@ const reporteAulas = async (req, res) => {
   }
 };
 
-const reportePc = async (req, res) => {
-  
-  try {
-    let data = {
-      id_usuario: req.body.DOCUMENTO2,
-      observaciones : req.body.OBSERVACIONES2,
-      fechaPrestamo:"00/00/00",
-      final_prestamo :"0000/00/00"
-    };
 
-    const url = "http://localhost:3000/api/prestamos";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      
-      body: JSON.stringify(data)
-      
-    };
-    console.log(data);
-    const response = await fetch(url, options)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error => console.log(error))
-
-    // Inspeccionar la respuesta del servidor
-   
-
-    if (data && data > 0) {
-    } else {
-      // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/controlAula?alerta=1");
-    }
-  } catch (error) {
-    console.error(error);
-     // Manejar la respuesta del servidor cuando no es válida
-    return res.redirect("/?alerta=2");
-  }
-};
 
 
 
@@ -409,6 +368,5 @@ export const instructorController = {
   InsertarHerramientas,
   InsertarAmbientes,
   InsertarComputador, 
-  reporteAulas,
-  reportePc
+  reporteAulas
 };

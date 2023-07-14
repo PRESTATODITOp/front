@@ -33,7 +33,7 @@ instructor.post('/insertarComputador',middle,validarDocumento,instruToken,instru
 
 instructor.post('/reportesAula',middle,validarDocumento,instruToken,instructorController.reporteAulas);
 
-instructor.post('/reportesPc',middle,validarDocumento,instruToken,instructorController.reportePc);
+
 
 
 
