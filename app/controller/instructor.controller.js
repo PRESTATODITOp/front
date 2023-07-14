@@ -34,7 +34,7 @@ const formularioComputador = async (req, res) => {
 
 const respuestaPrestamo =  async (req, res) => {
   try {
-    const rutaNotificacion = "http://localhost:3000/api/notificacion";
+    const rutaNotificacion = "http://localhost:3000/api/reserva";
 
     // Realizar solicitud GET para obtener los datos existentes
     const getOptions = {

@@ -91,11 +91,11 @@
                   </td>
                   <td>
                     <div class="button-container">
-                    <form action="aceptar?id=<%=reserva.ID_RESERVA%>&iduser=<%=reserva.ID_USUARIO%>&estado=aprobado" method="POST">
+                    <form action="aceptar?id=<%=reserva.ID_RESERVA%>&iduser=<%=reserva.ID_USUARIO%>&estado=aprobado" id="aceptarbtn" method="POST">
                       <button id="btnAceptar" type="submit" class="btnAceptar" data-reserva-id="<%= reserva.ID_RESERVA %>">Aceptar</button>
                     </form>
                     
-                      <form action="rechazar?id=<%=reserva.ID_RESERVA%>&iduser=<%=reserva.ID_USUARIO%>&estado=rechazado" method="POST">
+                      <form action="rechazar?id=<%=reserva.ID_RESERVA%>&iduser=<%=reserva.ID_USUARIO%>&estado=rechazado" id="rechazarbtn" method="POST">
                         <button id="btnRechazar" type="submit" class="btnRechazar" data-reserva-id="<%= reserva.ID_RESERVA %>">Rechazar</button>
                       </form>
                       </div>
