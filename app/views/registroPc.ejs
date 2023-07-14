@@ -24,7 +24,7 @@
           <h3>REGISTRO DE COMPUTADOR</h3>
         </div>
         <div class="mt-4">
-          <form action="/guardarEquipo" method="post">
+          <form id="registro-pc" action="/guardarEquipo" method="post">
             <div class="form-group row">
               <label for="tipo" class="col-sm-2 col-form-label">Marca <span class="text-danger">*</span></label>
               <div class="col-sm-4">
@@ -56,7 +56,38 @@
     </div>
     
 
-
+    <script>
+      document.getElementById('registro-pc').addEventListener('submit', function (event) {
+               event.preventDefault();
+               var form = event.target;
+   
+               if (form.checkValidity()) {
+                   Swal.fire({
+                       title: '¿Desea registrar este equipo??',
+                       icon: 'question',
+                       showCancelButton: true,
+                       confirmButtonText: 'Aceptar',
+                       cancelButtonText: 'Cancelar'
+                   }).then(function (result) {
+                       if (result.value) {
+                           Swal.fire({
+                               title: 'Se ha registrado el equipo de manera exitosa',
+                               icon: 'success',
+                               confirmButtonText: 'Aceptar'
+                           }).then(function () {
+                               form.submit();
+                           });
+                       }
+                   });
+               } else {
+                  //  Swal.fire({
+                  //      title: 'Debe llenar todos los campos para registrar a un usuario',
+                  //      icon: 'warning',
+                  //      confirmButtonText: 'Aceptar'
+                  //  });
+               }
+           });
+   </script>
 
 </body>
 

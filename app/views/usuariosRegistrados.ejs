@@ -35,7 +35,6 @@
                   <th>NOMBRE</th>
                   <th>APELLIDO</th>
                   <th>TIPO DE DOCUMENTO</th>
-                  <th>NUMERO DE DOCUMENTO</th>
                   <th>CORREO</th>
                   <th>TELEFONO</th>
                   <th>DIRECCION</th>
@@ -45,7 +44,6 @@
                   <th>GENERO</th>
                   <th>CONTRASEÑA</th>
                   <!--<th>ROL</th>-->
-                  <th>OPCIONES</th>
                 </tr>
               </thead>
               <tbody>
@@ -64,10 +62,6 @@
                     <td><%= elemento.GENERO %></td>
                     <td><%= elemento.CONTRASENA %></td>
                     <!--<td><%= elemento.ROL %></td>-->
-                    <td> 
-                      <i class="fas fa-trash-alt delete-icon trash-icon"></i>  
-                      <i class="fas fa-edit edit-icon mr-1" data-toggle="modal" data-target="#edit-modal"></i>
-                    </td>
                   </tr>
                 <% }); %>
                 

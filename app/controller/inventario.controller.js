@@ -171,26 +171,20 @@ const registroM = async (req, res) => {
       body: JSON.stringify(data)
       
     };
-    console.log(data);
-    const response = await fetch(url, options)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error => console.log(error))
+    const response = await fetch(url, options);
+      const responseData = await response.json();
 
-    // Inspeccionar la respuesta del servidor
-   
-
-    if (data && data > 0) {
-    } else {
-      // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/materialAdmin?alerta=1");
-    }
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/materialAdmin");
+      } else {
+          // Error en el registro
+          res.redirect("/materialAdmin");
+      }
   } catch (error) {
-    console.error(error);
-     // Manejar la respuesta del servidor cuando no es válida
-    return res.redirect("/?alerta=2");
+      console.error(error);
+      // Error en la petición
+      res.redirect("/?alerta=2");
   }
 };
 
@@ -213,26 +207,20 @@ const registroC = async (req, res) => {
       body: JSON.stringify(data)
       
     };
-    console.log(data);
-    const response = await fetch(url, options)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error => console.log(error))
+    const response = await fetch(url, options);
+      const responseData = await response.json();
 
-    // Inspeccionar la respuesta del servidor
-   
-
-    if (data && data > 0) {
-    } else {
-      // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/pcAdmin?alerta=1");
-    }
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/pcAdmin");
+      } else {
+          // Error en el registro
+          res.redirect("/pcAdmin");
+      }
   } catch (error) {
-    console.error(error);
-     // Manejar la respuesta del servidor cuando no es válida
-    return res.redirect("/?alerta=2");
+      console.error(error);
+      // Error en la petición
+      res.redirect("/?alerta=2");
   }
 };
 
@@ -258,26 +246,20 @@ const registroA = async (req, res) => {
       body: JSON.stringify(data)
       
     };
-    console.log(data);
-    const response = await fetch(url, options)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error => console.log(error))
+    const response = await fetch(url, options);
+      const responseData = await response.json();
 
-    // Inspeccionar la respuesta del servidor
-   
-
-    if (data && data > 0) {
-    } else {
-      // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/ambienteAdmin?alerta=1");
-    }
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/ambienteAdmin");
+      } else {
+          // Error en el registro
+          res.redirect("/ambienteAdmin");
+      }
   } catch (error) {
-    console.error(error);
-     // Manejar la respuesta del servidor cuando no es válida
-    return res.redirect("/?alerta=2");
+      console.error(error);
+      // Error en la petición
+      res.redirect("/?alerta=2");
   }
 };
 
@@ -299,26 +281,20 @@ const registroH = async (req, res) => {
       body: JSON.stringify(data)
       
     };
-    console.log(data);
-    const response = await fetch(url, options)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error => console.log(error))
+    const response = await fetch(url, options);
+      const responseData = await response.json();
 
-    // Inspeccionar la respuesta del servidor
-   
-
-    if (data && data > 0) {
-    } else {
-      // Manejar la respuesta del servidor cuando si es valida
-      return res.redirect("/herraAdmin?alerta=1");
-    }
+      if (responseData && responseData > 0) {
+          // Registro exitoso
+          res.redirect("/herraAdmin");
+      } else {
+          // Error en el registro
+          res.redirect("/herraAdmin");
+      }
   } catch (error) {
-    console.error(error);
-     // Manejar la respuesta del servidor cuando no es válida
-    return res.redirect("/?alerta=2");
+      console.error(error);
+      // Error en la petición
+      res.redirect("/?alerta=2");
   }
 };
 

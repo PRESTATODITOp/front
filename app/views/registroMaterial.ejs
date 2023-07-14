@@ -24,7 +24,7 @@
           <h3>REGISTRO DE MATERIAL</h3>
         </div>
         <div class="mt-4">
-          <form action="/registroMaterial" method="post">
+          <form id="registro-material" action="/registroMaterial" method="post">
             <div class="form-group row">
               <label for="tipo" class="col-sm-2 col-form-label">Nombre <span class="text-danger">*</span></label>
               <div class="col-sm-4">
@@ -63,10 +63,43 @@
     </div>
     
 
-
+    <script>
+      document.getElementById('registro-material').addEventListener('submit', function (event) {
+               event.preventDefault();
+               var form = event.target;
+   
+               if (form.checkValidity()) {
+                   Swal.fire({
+                       title: '¿Desea registrar este material??',
+                       icon: 'question',
+                       showCancelButton: true,
+                       confirmButtonText: 'Aceptar',
+                       cancelButtonText: 'Cancelar',
+                       confirmButtonColor: '#28a745',
+                         cancelButtonColor: '#dc3545'
+                   }).then(function (result) {
+                       if (result.value) {
+                           Swal.fire({
+                               title: 'Se ha registrado el material de manera exitosa',
+                               icon: 'success',
+                               confirmButtonText: 'Aceptar',
+                               confirmButtonColor: '#28a745'
+                           }).then(function () {
+                               form.submit();
+                           });
+                       }
+                   });
+               } else {
+                  //  Swal.fire({
+                  //      title: 'Debe llenar todos los campos para registrar a un usuario',
+                  //      icon: 'warning',
+                  //      confirmButtonText: 'Aceptar'
+                  //  });
+               }
+           });
+   </script>
 
 </body>
-<script src="/resources/js/materialesA.js"></script>
 <%- include('./partials/footer.ejs') %>
 
 </html>

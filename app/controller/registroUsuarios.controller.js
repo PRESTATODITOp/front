@@ -52,7 +52,7 @@ const registrarAdmi = async (req, res) => {
             res.redirect("/rol");
         } else {
             // Error en el registro
-            res.redirect("/?alerta=1");
+            res.redirect("/?rol");
         }
     } catch (error) {
         console.error(error);

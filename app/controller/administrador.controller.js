@@ -11,32 +11,67 @@ const devolucionInsumos = (req, res) => {
   
 };
 
+// const actualizarEstado = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     console.log("ID:", id); // Agregar console.log aquí
+
+//     const rutaPrestamo = `http://localhost:3000/api/prestamos/${id}`;
+
+//     const opciones = {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ estado: "ENTREGADO" }),
+//     };
+
+//     console.log("Opciones:", opciones); // Agregar console.log aquí
+
+//     const response = await fetch(rutaPrestamo, opciones);
+//     const data = await response.json();
+
+//     res.status(200).json(data);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Error interno del servidor" });
+//   }
+// }; //actualizacion
+
+
 const actualizarEstado = async (req, res) => {
+  const idPrestamo= req.query.id; 
+  const estado = req.query.estado;
+  console.log(idPrestamo);
+  console.log(estado);
+
+  const UpdateEstado = {
+    estado: estado,
+  };
+
+
   try {
-    const { id } = req.params;
-    console.log("ID:", id); // Agregar console.log aquí
-
-    const rutaPrestamo = `http://localhost:3000/api/prestamos/${id}`;
-
-    const opciones = {
-      method: "PUT",
+    const ruta = "http://localhost:3000/api/prestamo/" + idPrestamo;
+    const option = {
+      method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ estado: "ENTREGADO" }),
+      body: JSON.stringify(UpdateEstado),
     };
+    await fetch(ruta, option)
+    .then((response) => response.json())
+    .then((resEstado) => {
+      console.log(resEstado);
+    });
 
-    console.log("Opciones:", opciones); // Agregar console.log aquí
-
-    const response = await fetch(rutaPrestamo, opciones);
-    const data = await response.json();
-
-    res.status(200).json(data);
+    // PAGINA EXITO
+    res.redirect('/success');
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error interno del servidor" });
+    res.redirect('/error');
   }
-}; //actualizacion
+};
+
 
 const insumosNoDevueltos = async (req, res) => {
   try {

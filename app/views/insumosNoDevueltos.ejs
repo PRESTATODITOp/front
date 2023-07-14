@@ -60,7 +60,9 @@
                         <% } %>
                         <td><%= elemento.ESTADO %></td>
                     <td>
-                      <a href="javascript:void(0);" class="btn btn-success mr-2" data-id="<%= elemento.ID_PRESTAMOS %>">Entregado</a>
+                      <form action="actualizarEstado?id=<%=elemento.ID_PRESTAMOS%>&estado=entregado" method="POST">
+                      <button id="devuelto" type="submit" class="btn btn-success mr-2" data-id="<%= elemento.ID_PRESTAMOS %>">Entregado</button>
+                    </form>
                     </td>
                       </tr>
                     <% }); %>
@@ -70,7 +72,7 @@
         </div>
       </div>
     </div>  
-    <script> //esto es una actualizacion
+    <!-- <script> //esto es una actualizacion
       document.addEventListener("DOMContentLoaded", function () {
         const entregadoLinks = document.querySelectorAll(".btn-success");
     
@@ -100,7 +102,7 @@
           });
         });
       });
-    </script>
+    </script> -->
 </body>
 <%- include('./partials/footer.ejs') %>
 </html>

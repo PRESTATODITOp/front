@@ -24,7 +24,7 @@
           <h3>REGISTRO DE AMBIENTE</h3>
         </div>
         <div class="mt-4">
-          <form action="/registroAmbiente" method="post">
+          <form id="registro-ambiente" action="/registroAmbiente" method="post">
             <div class="form-group row">
               <label for="tipo" class="col-sm-2 col-form-label">Numero Ambiente <span class="text-danger">*</span></label>
               <div class="col-sm-4">
@@ -69,7 +69,41 @@
     </div>
     
 
-
+    <script>
+      document.getElementById('registro-ambiente').addEventListener('submit', function (event) {
+               event.preventDefault();
+               var form = event.target;
+   
+               if (form.checkValidity()) {
+                   Swal.fire({
+                       title: '¿Desea registrar este ambiente??',
+                       icon: 'question',
+                       showCancelButton: true,
+                       confirmButtonText: 'Aceptar',
+                       cancelButtonText: 'Cancelar',
+                       confirmButtonColor: '#28a745',
+                         cancelButtonColor: '#dc3545'
+                   }).then(function (result) {
+                       if (result.value) {
+                           Swal.fire({
+                               title: 'Se ha registrado el ambiente de manera exitosa',
+                               icon: 'success',
+                               confirmButtonText: 'Aceptar',
+                               confirmButtonColor: '#28a745'
+                           }).then(function () {
+                               form.submit();
+                           });
+                       }
+                   });
+               } else {
+                  //  Swal.fire({
+                  //      title: 'Debe llenar todos los campos para registrar a un usuario',
+                  //      icon: 'warning',
+                  //      confirmButtonText: 'Aceptar'
+                  //  });
+               }
+           });
+   </script>
 
 </body>
 

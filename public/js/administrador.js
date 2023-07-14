@@ -21,8 +21,7 @@
 //       text: '¿Realmente deseas regresar?',
 //       icon: 'warning',
 //       showCancelButton: true,
-//       confirmButtonColor: '#28a745',
-//       cancelButtonColor: '#dc3545',
+//       
 //       confirmButtonText: 'Sí, regresar',
 //       cancelButtonText: 'Cancelar'
 //     }).then((result) => {

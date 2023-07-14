@@ -120,13 +120,16 @@
                          icon: 'question',
                          showCancelButton: true,
                          confirmButtonText: 'Aceptar',
-                         cancelButtonText: 'Cancelar'
+                         cancelButtonText: 'Cancelar',
+                         confirmButtonColor: '#28a745',
+                         cancelButtonColor: '#dc3545'
                      }).then(function (result) {
                          if (result.value) {
                              Swal.fire({
                                  title: 'Se ha registrado al usuario de manera exitosa',
                                  icon: 'success',
-                                 confirmButtonText: 'Aceptar'
+                                 confirmButtonText: 'Aceptar',
+                                 confirmButtonColor: '#28a745'
                              }).then(function () {
                                  form.submit();
                              });
