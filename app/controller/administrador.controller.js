@@ -11,6 +11,33 @@ const devolucionInsumos = (req, res) => {
   
 };
 
+const actualizarEstado = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("ID:", id); // Agregar console.log aquí
+
+    const rutaPrestamo = `http://localhost:3000/api/prestamos/${id}`;
+
+    const opciones = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ estado: "ENTREGADO" }),
+    };
+
+    console.log("Opciones:", opciones); // Agregar console.log aquí
+
+    const response = await fetch(rutaPrestamo, opciones);
+    const data = await response.json();
+
+    res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error interno del servidor" });
+  }
+}; //actualizacion
+
 const insumosNoDevueltos = async (req, res) => {
   try {
     const rutaRegistro = "http://localhost:3000/api/reserva";
@@ -123,7 +150,8 @@ const insumosNoDevueltos = async (req, res) => {
     solicitud,
     usuariosRegistrados,
     devolucionInsumos,
-    insumosNoDevueltos
+    insumosNoDevueltos,
+    actualizarEstado //actualizacion
   };
   
   

@@ -58,9 +58,9 @@
                           <td></td>
                           <td></td>
                         <% } %>
-                        <td>por entregar</td>
+                        <td><%= elemento.ESTADO %></td>
                     <td>
-                      <button type="submit" class="btn btn-success mr-2">Entregado</button>
+                      <a href="javascript:void(0);" class="btn btn-success mr-2" data-id="<%= elemento.ID_PRESTAMOS %>">Entregado</a>
                     </td>
                       </tr>
                     <% }); %>
@@ -70,6 +70,37 @@
         </div>
       </div>
     </div>  
+    <script> //esto es una actualizacion
+      document.addEventListener("DOMContentLoaded", function () {
+        const entregadoLinks = document.querySelectorAll(".btn-success");
+    
+        entregadoLinks.forEach((link) => {
+          link.addEventListener("click", async function (e) {
+            e.preventDefault();
+            console.log("Evento de clic ejecutado"); // Agregar console.log aquí
+            const id = this.getAttribute("data-id");
+            try {
+              const response = await fetch(`/prestamos/${id}/entregado`, {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              if (response.ok) {
+                const data = await response.json();
+                alert("Estado actualizado a 'ENTREGADO'");
+                location.reload();
+              } else {
+                alert("No se pudo actualizar el estado.");
+              }
+            } catch (error) {
+              console.error(error);
+              alert("Error al actualizar el estado.");
+            }
+          });
+        });
+      });
+    </script>
 </body>
 <%- include('./partials/footer.ejs') %>
 </html>

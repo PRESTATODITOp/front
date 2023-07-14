@@ -10,6 +10,7 @@ administrador.get('/registroSolicitud',middle,admiToken,administradorController.
 administrador.get('/usuariosRegistrados',middle,admiToken,administradorController.usuariosRegistrados);
 administrador.get('/devolucionInsumos',middle,admiToken,administradorController.devolucionInsumos);
 administrador.get('/insumosNoDevueltos',middle,admiToken,administradorController.insumosNoDevueltos);
+administrador.put('/prestamos/:id/entregado', middle, admiToken, administradorController.actualizarEstado); //esto es una actualizacion
 
 
 
