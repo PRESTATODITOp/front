@@ -77,7 +77,7 @@ var registroInstructor = /*#__PURE__*/function () {
 }();
 var registrarAdmi = /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(req, res) {
-    var data, url, options, response;
+    var data, url, options, response, responseData;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
@@ -104,37 +104,31 @@ var registrarAdmi = /*#__PURE__*/function () {
             },
             body: JSON.stringify(data)
           };
-          console.log(data);
-          _context5.next = 7;
-          return (0, _nodeFetch["default"])(url, options).then(function (response) {
-            return response.json();
-          }).then(function (data) {
-            console.log(data);
-          })["catch"](function (error) {
-            return console.log(error);
-          });
-        case 7:
+          _context5.next = 6;
+          return (0, _nodeFetch["default"])(url, options);
+        case 6:
           response = _context5.sent;
-          if (data && data > 0) {
+          _context5.next = 9;
+          return response.json();
+        case 9:
+          responseData = _context5.sent;
+          if (responseData && responseData > 0) {
             // Registro exitoso
-            res.redirect("/rol");
-          } else {
-            // Error en el registro
-            res.redirect("/?rol");
+            res.redirect("/rol?alerta=1");
           }
-          _context5.next = 15;
+          _context5.next = 17;
           break;
-        case 11:
-          _context5.prev = 11;
+        case 13:
+          _context5.prev = 13;
           _context5.t0 = _context5["catch"](0);
           console.error(_context5.t0);
           // Error en la petición
           res.redirect("/?alerta=2");
-        case 15:
+        case 17:
         case "end":
           return _context5.stop();
       }
-    }, _callee5, null, [[0, 11]]);
+    }, _callee5, null, [[0, 13]]);
   }));
   return function registrarAdmi(_x9, _x10) {
     return _ref5.apply(this, arguments);

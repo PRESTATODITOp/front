@@ -44,20 +44,13 @@ const registrarAdmi = async (req, res) => {
             body: JSON.stringify(data)
         };
 
-        console.log(data);
-        const response = await fetch(url, options)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.log(error));
+        const response = await fetch(url, options);
+        const responseData = await response.json();
 
-        if (data && data > 0) {
+        if (responseData && responseData > 0) {
             // Registro exitoso
-            res.redirect("/rol");
-        } else {
-            // Error en el registro
-            res.redirect("/?rol");
+            res.redirect("/rol?alerta=1");
+       
         }
     } catch (error) {
         console.error(error);
