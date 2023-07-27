@@ -174,7 +174,7 @@ var imprimirPDFC = /*#__PURE__*/function () {
           table = {
             headers: ['Numero ambiente', 'Cantidad sillas', 'Cantidad mesas', 'Numero aprendices', 'Numero equipos'],
             rows: ambienteData.map(function (ambiente) {
-              return [ambiente.ID_AMBIENTE, ambiente.CANTIDAD_SILLAS, ambiente.CANT_MESAS, ambiente.NUM_APRENDICES, ambiente.NUM_EQUIPOS];
+              return [ambiente.ID_AMBIENTES, ambiente.CANT_SILLAS, ambiente.CANT_MESAS, ambiente.NUM_APRENDICES, ambiente.NUM_EQUIPOS];
             })
           }; // Agregar la tabla al documento con un tamaño de letra más pequeño
           _context2.next = 24;

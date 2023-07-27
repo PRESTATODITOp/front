@@ -129,8 +129,8 @@ const imprimirPDFC = async (req, res) => {
     const table = {
       headers: ['Numero ambiente', 'Cantidad sillas', 'Cantidad mesas', 'Numero aprendices', 'Numero equipos'],
       rows: ambienteData.map(ambiente => [
-        ambiente.ID_AMBIENTE,
-        ambiente.CANTIDAD_SILLAS,
+        ambiente.ID_AMBIENTES,
+        ambiente.CANT_SILLAS,
         ambiente.CANT_MESAS,
         ambiente.NUM_APRENDICES,
         ambiente.NUM_EQUIPOS
