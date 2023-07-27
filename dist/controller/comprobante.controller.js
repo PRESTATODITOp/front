@@ -17,7 +17,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var generarPdf = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var response, materialData, doc, logoHeight, logoWidth, __dirname, imagePath, pageWidth, pageHeight, logoX, logoY, table, validarToken, ruta, option, nombres, fechaActual, generadoPor;
+    var response, materialData, doc, logoHeight, logoWidth, __dirname, imagePath, pageWidth, pageHeight, logoX, logoY, table, validarToken, ruta, nombres, fechaActual, generadoPor;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -82,19 +82,14 @@ var generarPdf = /*#__PURE__*/function () {
           // Obtener el nombre del usuario generado por la API
           validarToken = _jsonwebtoken["default"].verify(req.cookies.PRESTATODITO, process.env.SECRET_KEY);
           ruta = process.env.ENDPOINT + "/api/usuario/".concat(validarToken.ID_USUARIO);
-          option = {
-            method: "GET"
-          };
           nombres = '';
-          _context.next = 30;
-          return fetch(ruta, option).then(function (response) {
-            return response.json();
-          }).then(function (data) {
-            nombres = "".concat(data[0][0].NOMBRE, " ").concat(data[0][0].APELLIDO);
+          _context.next = 29;
+          return _axios["default"].get(ruta).then(function (response) {
+            nombres = "".concat(response.data[0][0].NOMBRE, " ").concat(response.data[0][0].APELLIDO);
           })["catch"](function (err) {
             return console.error("error en peticion" + err);
           });
-        case 30:
+        case 29:
           // Agregar los detalles en el pie de página
           fechaActual = (0, _momentTimezone["default"])().tz('America/Bogota').format('YYYY-MM-DD h:mm:ss A');
           generadoPor = "Generado por: ".concat(nombres);
@@ -109,19 +104,19 @@ var generarPdf = /*#__PURE__*/function () {
 
           // Finalizar el PDF
           doc.end();
-          _context.next = 41;
+          _context.next = 40;
           break;
-        case 37:
-          _context.prev = 37;
+        case 36:
+          _context.prev = 36;
           _context.t0 = _context["catch"](0);
           // Manejar errores de solicitud o cualquier otro error
           console.error(_context.t0);
           res.status(500).send('Error al generar el PDF');
-        case 41:
+        case 40:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 37]]);
+    }, _callee, null, [[0, 36]]);
   }));
   return function generarPdf(_x, _x2) {
     return _ref.apply(this, arguments);

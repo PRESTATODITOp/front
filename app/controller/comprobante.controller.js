@@ -62,14 +62,11 @@ const generarPdf = async (req, res) => {
     // Obtener el nombre del usuario generado por la API
     const validarToken = jwt.verify(req.cookies.PRESTATODITO, process.env.SECRET_KEY);
     let ruta = process.env.ENDPOINT + `/api/usuario/${validarToken.ID_USUARIO}`;
-    let option = {
-      method: "GET",
-    };
+
     let nombres = '';
-    await fetch(ruta, option)
-      .then((response) => response.json())
-      .then((data) => {
-        nombres = `${data[0][0].NOMBRE} ${data[0][0].APELLIDO}`;
+    await axios.get(ruta)
+      .then((response) => {
+        nombres = `${response.data[0][0].NOMBRE} ${response.data[0][0].APELLIDO}`;
       })
       .catch((err) => console.error("error en peticion" + err));
 
