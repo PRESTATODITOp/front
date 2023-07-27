@@ -177,10 +177,10 @@ var registrarAlumno = /*#__PURE__*/function () {
           responseData = _context6.sent;
           if (responseData && responseData > 0) {
             // Registro exitoso
-            res.redirect("/rol");
+            res.redirect("/rol?alerta=1");
           } else {
             // Error en el registro
-            res.redirect("/rol");
+            res.redirect("/rol?alerta=2");
           }
           _context6.next = 17;
           break;
@@ -189,7 +189,7 @@ var registrarAlumno = /*#__PURE__*/function () {
           _context6.t0 = _context6["catch"](0);
           console.error(_context6.t0);
           // Error en la petición
-          res.redirect("/?alerta=2");
+          res.redirect("/?alerta=3");
         case 17:
         case "end":
           return _context6.stop();
@@ -238,10 +238,10 @@ var registrarCoordi = /*#__PURE__*/function () {
           responseData = _context7.sent;
           if (responseData && responseData > 0) {
             // Registro exitoso
-            res.redirect("/rol");
+            res.redirect("/rol?alerta=1");
           } else {
             // Error en el registro
-            res.redirect("/rol");
+            res.redirect("/rol?alerta=2");
           }
           _context7.next = 17;
           break;
@@ -250,7 +250,7 @@ var registrarCoordi = /*#__PURE__*/function () {
           _context7.t0 = _context7["catch"](0);
           console.error(_context7.t0);
           // Error en la petición
-          res.redirect("/?alerta=2");
+          res.redirect("/?alerta=3");
         case 17:
         case "end":
           return _context7.stop();
@@ -301,10 +301,10 @@ var registroi = /*#__PURE__*/function () {
           responseData = _context8.sent;
           if (responseData && responseData > 0) {
             // Registro exitoso
-            res.redirect("/rol");
+            res.redirect("/rol?alerta=1");
           } else {
             // Error en el registro
-            res.redirect("/rol");
+            res.redirect("/rol?alerta=2");
           }
           _context8.next = 17;
           break;
@@ -313,7 +313,7 @@ var registroi = /*#__PURE__*/function () {
           _context8.t0 = _context8["catch"](0);
           console.error(_context8.t0);
           // Error en la petición
-          res.redirect("/?alerta=2");
+          res.redirect("/?alerta=3");
         case 17:
         case "end":
           return _context8.stop();
