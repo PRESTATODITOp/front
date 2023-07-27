@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-//pruebaa
+//pruebaa aa
 const registroAdministrador = async(req,res)=>{
     res.render('registroadministrador.ejs');
 }
