@@ -22,6 +22,8 @@ const generarPdf = async (req, res) => {
     doc.pipe(res);
 
     // Agregar el logo del proyecto
+
+    //arreglo
     const logoHeight = 50;
     const logoWidth = 50;
     const __dirname = path.resolve()

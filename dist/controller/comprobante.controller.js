@@ -37,6 +37,8 @@ var generarPdf = /*#__PURE__*/function () {
           doc.pipe(res);
 
           // Agregar el logo del proyecto
+
+          //arreglo
           logoHeight = 50;
           logoWidth = 50;
           __dirname = _path["default"].resolve();
