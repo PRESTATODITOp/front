@@ -50,12 +50,14 @@ const registrarAdmi = async (req, res) => {
         if (responseData && responseData > 0) {
             // Registro exitoso
             res.redirect("/rol?alerta=1");
-       
+        } else {
+            // Error en el registro
+            res.redirect("/rol?alerta=2");
         }
     } catch (error) {
         console.error(error);
         // Error en la petición
-        res.redirect("/?alerta=2");
+        res.redirect("/?alerta=3");
     }
 };
 

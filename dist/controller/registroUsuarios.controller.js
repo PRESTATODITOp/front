@@ -115,6 +115,9 @@ var registrarAdmi = /*#__PURE__*/function () {
           if (responseData && responseData > 0) {
             // Registro exitoso
             res.redirect("/rol?alerta=1");
+          } else {
+            // Error en el registro
+            res.redirect("/rol?alerta=2");
           }
           _context5.next = 17;
           break;
@@ -123,7 +126,7 @@ var registrarAdmi = /*#__PURE__*/function () {
           _context5.t0 = _context5["catch"](0);
           console.error(_context5.t0);
           // Error en la petición
-          res.redirect("/?alerta=2");
+          res.redirect("/?alerta=3");
         case 17:
         case "end":
           return _context5.stop();
