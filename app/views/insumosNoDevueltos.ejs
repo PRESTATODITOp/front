@@ -60,7 +60,7 @@
                         <% } %>
                         <td><%= elemento.ESTADO %></td>
                     <td>
-                      <form action="actualizarEstado?id=<%=elemento.ID_PRESTAMOS%>&estado=entregado" method="POST">
+                      <form action="actualizarEstado?id=<%=elemento.ID_PRESTAMOS%>&estado=ENTREGADO" method="POST">
                       <button id="devuelto" type="submit" class="btn btn-success mr-2" data-id="<%= elemento.ID_PRESTAMOS %>">Entregado</button>
                     </form>
                     </td>
@@ -72,36 +72,8 @@
         </div>
       </div>
     </div>  
-    <!-- <script> //esto es una actualizacion
-      document.addEventListener("DOMContentLoaded", function () {
-        const entregadoLinks = document.querySelectorAll(".btn-success");
-    
-        entregadoLinks.forEach((link) => {
-          link.addEventListener("click", async function (e) {
-            e.preventDefault();
-            console.log("Evento de clic ejecutado"); // Agregar console.log aquí
-            const id = this.getAttribute("data-id");
-            try {
-              const response = await fetch(`/prestamos/${id}/entregado`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              });
-              if (response.ok) {
-                const data = await response.json();
-                alert("Estado actualizado a 'ENTREGADO'");
-                location.reload();
-              } else {
-                alert("No se pudo actualizar el estado.");
-              }
-            } catch (error) {
-              console.error(error);
-              alert("Error al actualizar el estado.");
-            }
-          });
-        });
-      });
+   
+     
     </script> -->
 </body>
 <%- include('./partials/footer.ejs') %>

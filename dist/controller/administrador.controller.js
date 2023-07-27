@@ -74,47 +74,48 @@ var actualizarEstado = /*#__PURE__*/function () {
 }();
 var insumosNoDevueltos = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var rutaRegistro, rutaPrestamo, opciones, _yield$Promise$all, _yield$Promise$all2, datosReserva, datosPrestamo, datosReservaFiltrados;
+    var insumosD, rutaRegistro, rutaPrestamo, opciones, _yield$Promise$all, _yield$Promise$all2, datosReserva, datosPrestamo, datosReservaFiltrados;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.prev = 0;
+          insumosD = {};
+          _context2.prev = 1;
           rutaRegistro = process.env.ENDPOINT + "/api/reserva";
           rutaPrestamo = process.env.ENDPOINT + "/api/prestamos";
           opciones = {
             method: "GET"
           };
-          _context2.next = 6;
+          _context2.next = 7;
           return Promise.all([(0, _nodeFetch["default"])(rutaRegistro, opciones).then(function (response) {
             return response.json();
           }), (0, _nodeFetch["default"])(rutaPrestamo, opciones).then(function (response) {
             return response.json();
           })]);
-        case 6:
+        case 7:
           _yield$Promise$all = _context2.sent;
           _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
           datosReserva = _yield$Promise$all2[0];
           datosPrestamo = _yield$Promise$all2[1];
           datosReservaFiltrados = datosPrestamo[0].filter(function (element) {
-            return element.ESTADO === "Por entregar";
+            return element.ESTADO === "ENTREGADO";
           });
           console.log(datosPrestamo[0]);
           res.render("insumosNoDevueltos", {
             datosReserva: datosReservaFiltrados,
             datosPrestamo: datosPrestamo[0]
           });
-          _context2.next = 19;
+          _context2.next = 20;
           break;
-        case 15:
-          _context2.prev = 15;
-          _context2.t0 = _context2["catch"](0);
+        case 16:
+          _context2.prev = 16;
+          _context2.t0 = _context2["catch"](1);
           console.error(_context2.t0);
           res.redirect("/");
-        case 19:
+        case 20:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 15]]);
+    }, _callee2, null, [[1, 16]]);
   }));
   return function insumosNoDevueltos(_x3, _x4) {
     return _ref2.apply(this, arguments);

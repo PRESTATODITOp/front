@@ -91,7 +91,7 @@ const generarPdf = async (req, res) => {
 const imprimirPDFC = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.ENDPOINT + "/api/material");
+    const response = await axios.get(process.env.ENDPOINT + "/api/ambientes");
     const ambienteData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo documento PDF
@@ -99,7 +99,7 @@ const imprimirPDFC = async (req, res) => {
 
     // Stream el contenido PDF a la respuesta HTTP
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename=material.pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=ambiente.pdf');
     doc.pipe(res);
 
     // Agregar el logo del proyecto
@@ -129,8 +129,8 @@ const imprimirPDFC = async (req, res) => {
     const table = {
       headers: ['Numero ambiente', 'Cantidad sillas', 'Cantidad mesas', 'Numero aprendices', 'Numero equipos'],
       rows: ambienteData.map(ambiente => [
-        ambiente.ID_AMBIENTES,
-        ambiente.CANT_SILLAS,
+        ambiente.ID_AMBIENTE,
+        ambiente.CANTIDAD_SILLAS,
         ambiente.CANT_MESAS,
         ambiente.NUM_APRENDICES,
         ambiente.NUM_EQUIPOS

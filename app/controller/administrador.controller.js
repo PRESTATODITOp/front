@@ -43,6 +43,7 @@ const actualizarEstado = async (req, res) => {
 
 
 const insumosNoDevueltos = async (req, res) => {
+  let insumosD = {};
   try {
     const rutaRegistro = process.env.ENDPOINT +"/api/reserva";
     const rutaPrestamo = process.env.ENDPOINT +"/api/prestamos";
@@ -57,7 +58,7 @@ const insumosNoDevueltos = async (req, res) => {
     ]);
 
     const datosReservaFiltrados = datosPrestamo[0].filter((element) => {
-      return element.ESTADO === "Por entregar";
+      return element.ESTADO === "ENTREGADO";
     }); console.log(datosPrestamo[0])
 
     res.render("insumosNoDevueltos", {

@@ -132,7 +132,7 @@ var imprimirPDFC = /*#__PURE__*/function () {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return _axios["default"].get(process.env.ENDPOINT + "/api/material");
+          return _axios["default"].get(process.env.ENDPOINT + "/api/ambientes");
         case 3:
           response = _context2.sent;
           ambienteData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -142,7 +142,7 @@ var imprimirPDFC = /*#__PURE__*/function () {
             size: 'A4'
           }); // Stream el contenido PDF a la respuesta HTTP
           res.setHeader('Content-Type', 'application/pdf');
-          res.setHeader('Content-Disposition', 'attachment; filename=material.pdf');
+          res.setHeader('Content-Disposition', 'attachment; filename=ambiente.pdf');
           doc.pipe(res);
 
           // Agregar el logo del proyecto
@@ -174,7 +174,7 @@ var imprimirPDFC = /*#__PURE__*/function () {
           table = {
             headers: ['Numero ambiente', 'Cantidad sillas', 'Cantidad mesas', 'Numero aprendices', 'Numero equipos'],
             rows: ambienteData.map(function (ambiente) {
-              return [ambiente.ID_AMBIENTES, ambiente.CANT_SILLAS, ambiente.CANT_MESAS, ambiente.NUM_APRENDICES, ambiente.NUM_EQUIPOS];
+              return [ambiente.ID_AMBIENTE, ambiente.CANTIDAD_SILLAS, ambiente.CANT_MESAS, ambiente.NUM_APRENDICES, ambiente.NUM_EQUIPOS];
             })
           }; // Agregar la tabla al documento con un tamaño de letra más pequeño
           _context2.next = 24;
