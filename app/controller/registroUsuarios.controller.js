@@ -20,7 +20,7 @@ const registroInstructor = async (req, res) => {
 
 const registrarAdmi = async (req, res) => {
     try {
-        const data = {
+        let data = {
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             tipo_documento: req.body.tipo_documento,
@@ -44,10 +44,15 @@ const registrarAdmi = async (req, res) => {
             body: JSON.stringify(data)
         };
 
-        const response = await fetch(url, options);
-        const responseData = await response.json();
+        console.log(data);
+        const response = await fetch(url, options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.log(error));
 
-        if (responseData && responseData > 0) {
+        if (data && data > 0) {
             // Registro exitoso
             res.redirect("/rol");
         } else {
