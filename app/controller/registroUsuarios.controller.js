@@ -61,6 +61,7 @@ const registrarAdmi = async (req, res) => {
     }
 };
 
+
 const registrarAlumno = async (req, res) => {
   
     try {
