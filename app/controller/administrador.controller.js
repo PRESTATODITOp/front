@@ -45,10 +45,10 @@ const actualizarEstado = async (req, res) => {
 const insumosNoDevueltos = async (req, res) => {
   let insumosD = {};
   try {
-    const rutaRegistro = process.env.ENDPOINT +"/api/reserva";
-    const rutaPrestamo = process.env.ENDPOINT +"/api/prestamos";
+    let rutaRegistro = process.env.ENDPOINT +"/api/reserva";
+    let rutaPrestamo = process.env.ENDPOINT +"/api/prestamos";
 
-    const opciones = {
+    let opciones = {
       method: "GET",
     };
 
@@ -57,12 +57,12 @@ const insumosNoDevueltos = async (req, res) => {
       fetch(rutaPrestamo, opciones).then((response) => response.json()),
     ]);
 
-    const datosReservaFiltrados = datosPrestamo[0].filter((element) => {
+    let insumosD = data[0].map((element) => {
       return element.ESTADO === "ENTREGADO";
     }); console.log(datosPrestamo[0])
 
     res.render("insumosNoDevueltos", {
-      datosReserva: datosReservaFiltrados,
+      datosReserva: datosReserva[0],
       datosPrestamo: datosPrestamo[0],
     });
   } catch (error) {
