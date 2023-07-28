@@ -20,7 +20,7 @@ const actualizarEstado = async (req, res) => {
   };
 
   try {
-    const ruta = process.env.ENDPOINT +"/api/prestamo/" + idPrestamo;
+    const ruta = process.env.ENDPOINT + "/api/prestamo/" + idPrestamo;
     const option = {
       method: "PATCH",
       headers: {
@@ -41,37 +41,46 @@ const actualizarEstado = async (req, res) => {
   }
 };
 
-
 const insumosNoDevueltos = async (req, res) => {
   let insumosD = {};
   try {
-    let rutaRegistro = process.env.ENDPOINT +"/api/reserva";
-    let rutaPrestamo = process.env.ENDPOINT +"/api/prestamos";
+    let rutaRegistro = process.env.ENDPOINT + "/api/reserva";
+    let rutaPrestamo = process.env.ENDPOINT + "/api/prestamos";
 
     let opciones = {
       method: "GET",
-    };
-
+    }; 
+    
     const [datosReserva, datosPrestamo] = await Promise.all([
       fetch(rutaRegistro, opciones).then((response) => response.json()),
       fetch(rutaPrestamo, opciones).then((response) => response.json()),
     ]);
 
-    // let insumosD = data[0].map((element) => {
-    //   return element.ESTADO === "ENTREGADO";
-    // }); console.log(datosPrestamo[0])
+    const result = await fetch(rutaPrestamo, opciones)
+      .then((response) => response.json())
+      .then((data) => {
+        let datosMap = data[0].map((element) => {
+          if (element.ESTADO === "ENTREGADO") {
+            return element;
+          }
+        });
+ 
+        insumosD= datosMap.filter((input) => {
+          return input !== undefined;
+        });
+      })
+      .catch((err) => console.error("error en peticion" + err));
 
-    res.render("insumosNoDevueltos", {
-      datosReserva: datosReserva[0],
-      datosPrestamo: datosPrestamo,
-    });
+      res.render("insumosNoDevueltos", {
+        insumosD:insumosD,
+        datosReserva: datosReserva[0],
+        datosPrestamo: datosPrestamo,
+      });
   } catch (error) {
-    console.error(error);
+    console.error("Error al ejecutar la función 'aprobar':", error);
     res.redirect("/");
   }
 };
-
-
 
 // Cuando el documento está listo, se ejecuta la función de devolución de llamada.
 const validarRol = (req, res) => {
@@ -101,8 +110,7 @@ const validarRol = (req, res) => {
 
 const solicitud = async (req, res) => {
   try {
-    const rutaRegistro = process.env.ENDPOINT +"/api/reserva";
-  
+    const rutaRegistro = process.env.ENDPOINT + "/api/reserva";
 
     const opciones = {
       method: "GET",
@@ -111,9 +119,8 @@ const solicitud = async (req, res) => {
     const getResponse = await fetch(rutaRegistro, opciones);
     const datosReserva = await getResponse.json();
 
-    res.render('registroSolicitud', {
+    res.render("registroSolicitud", {
       datosReserva: datosReserva[0], // Datos existentes
-  
     });
   } catch (error) {
     console.error(error);
@@ -123,7 +130,7 @@ const solicitud = async (req, res) => {
 
 const usuariosRegistrados = async (req, res) => {
   try {
-    let ruta = process.env.ENDPOINT +"/api/usuario";
+    let ruta = process.env.ENDPOINT + "/api/usuario";
     let option = {
       method: "GET",
     };
