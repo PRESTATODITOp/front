@@ -74,7 +74,7 @@ var actualizarEstado = /*#__PURE__*/function () {
 }();
 var insumosNoDevueltos = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var insumosD, rutaRegistro, rutaPrestamo, opciones, _yield$Promise$all, _yield$Promise$all2, datosReserva, datosPrestamo, _insumosD;
+    var insumosD, rutaRegistro, rutaPrestamo, opciones, _yield$Promise$all, _yield$Promise$all2, datosReserva, datosPrestamo;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
@@ -96,26 +96,26 @@ var insumosNoDevueltos = /*#__PURE__*/function () {
           _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
           datosReserva = _yield$Promise$all2[0];
           datosPrestamo = _yield$Promise$all2[1];
-          _insumosD = data[0].map(function (element) {
-            return element.ESTADO === "ENTREGADO";
-          });
-          console.log(datosPrestamo[0]);
+          // let insumosD = data[0].map((element) => {
+          //   return element.ESTADO === "ENTREGADO";
+          // }); console.log(datosPrestamo[0])
+
           res.render("insumosNoDevueltos", {
             datosReserva: datosReserva[0],
-            datosPrestamo: datosPrestamo[0]
+            datosPrestamo: datosPrestamo
           });
-          _context2.next = 20;
+          _context2.next = 18;
           break;
-        case 16:
-          _context2.prev = 16;
+        case 14:
+          _context2.prev = 14;
           _context2.t0 = _context2["catch"](1);
           console.error(_context2.t0);
           res.redirect("/");
-        case 20:
+        case 18:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[1, 16]]);
+    }, _callee2, null, [[1, 14]]);
   }));
   return function insumosNoDevueltos(_x3, _x4) {
     return _ref2.apply(this, arguments);

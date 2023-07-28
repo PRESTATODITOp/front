@@ -57,13 +57,13 @@ const insumosNoDevueltos = async (req, res) => {
       fetch(rutaPrestamo, opciones).then((response) => response.json()),
     ]);
 
-    let insumosD = data[0].map((element) => {
-      return element.ESTADO === "ENTREGADO";
-    }); console.log(datosPrestamo[0])
+    // let insumosD = data[0].map((element) => {
+    //   return element.ESTADO === "ENTREGADO";
+    // }); console.log(datosPrestamo[0])
 
     res.render("insumosNoDevueltos", {
       datosReserva: datosReserva[0],
-      datosPrestamo: datosPrestamo[0],
+      datosPrestamo: datosPrestamo,
     });
   } catch (error) {
     console.error(error);
