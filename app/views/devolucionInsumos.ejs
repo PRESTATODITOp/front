@@ -37,7 +37,38 @@
                 </tr>
               </thead>
               <tbody>
-              
+                <% datosPrestamo.forEach((prestamos, index) => { %>
+                  <tr>
+                    <td>
+                      <%= prestamos.ID_PRESTAMOS %>
+                    </td>
+                    <% if (datosReserva[index]) { %>
+                      <td>
+                        <%= datosReserva[index].NOMBRE_INSUMO %>
+                      </td>
+                      <td>
+                        <%= datosReserva[index].CANTIDAD %>
+                      </td>
+                    <% } else { %>
+                      <td></td>
+                      <td></td>
+                    <% } %>
+                    <% if (datosPrestamo[index]) { %>
+                      <td>
+                        <%= prestamos.ID_USUARIO %>
+                      </td>
+                      <td>
+                        <%= reserva.FECHA_RES %>
+                      </td>
+                    <% } else { %>
+                      <td></td>
+                      <td></td>
+                    <% } %>
+                    <td>
+                      <%= prestamos.ESTADO %>
+                    </td>
+                  </tr>
+                <% }); %>
                 
               </tbody>
             </table>

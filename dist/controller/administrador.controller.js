@@ -45,26 +45,29 @@ var devolucionInsumos = /*#__PURE__*/function () {
           _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
           datosReserva = _yield$Promise$all2[0];
           datosPrestamo = _yield$Promise$all2[1];
+          console.log(datosReserva);
+          console.log(datosPrestamo);
+
           // Filtrar los datos para mostrar solo los elementos con el estado "ENTREGADO"
           datosPrestamoFiltrados = datosPrestamo[0].filter(function (element) {
             return element.ESTADO === "ENTREGADO";
           });
           res.render("devolucionInsumos", {
-            datosReserva: datosReserva,
+            datosReserva: datosReserva[0],
             datosPrestamo: datosPrestamoFiltrados
           });
-          _context.next = 18;
+          _context.next = 20;
           break;
-        case 14:
-          _context.prev = 14;
+        case 16:
+          _context.prev = 16;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           res.redirect("/");
-        case 18:
+        case 20:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 14]]);
+    }, _callee, null, [[0, 16]]);
   }));
   return function devolucionInsumos(_x, _x2) {
     return _ref.apply(this, arguments);

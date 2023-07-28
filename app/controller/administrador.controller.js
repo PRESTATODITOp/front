@@ -17,6 +17,8 @@ const devolucionInsumos = async (req, res) => {
       fetch(rutaRegistro, opciones).then((response) => response.json()),
       fetch(rutaPrestamo, opciones).then((response) => response.json()),
     ]);
+     console.log(datosReserva);
+     console.log(datosPrestamo);
 
     // Filtrar los datos para mostrar solo los elementos con el estado "ENTREGADO"
     const datosPrestamoFiltrados = datosPrestamo[0].filter((element) => {
@@ -24,7 +26,7 @@ const devolucionInsumos = async (req, res) => {
     });
 
     res.render("devolucionInsumos", {
-      datosReserva: datosReserva,
+      datosReserva: datosReserva[0],
       datosPrestamo: datosPrestamoFiltrados,
     });
   } catch (error) {
