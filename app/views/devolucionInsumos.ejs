@@ -53,7 +53,9 @@
                       <td></td>
                     <% } %>
                     <td><%= element.ESTADO %></td>
+                     <% if (datosPrestamo[index]) { %>
                     <td><%= element.FINAL_PRESTAMO %></td> 
+                     <% } %>
                   </tr>
                 <% }); %>
               </tbody>            
