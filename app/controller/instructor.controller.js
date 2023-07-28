@@ -129,7 +129,8 @@ const InsertarMateriales = async (req, res) => {
       jornada: req.body.JORNADA,
       fecha_res:req.body.FECHA,
       hora_res: req.body.HORA,
-      tiempo_requerido:"00:00:00"
+      tiempo_requerido:"00:00:00",
+      id_reserva:"34567"
     };
 
     const url = process.env.ENDPOINT +"/api/insumosReserva"
