@@ -43,26 +43,35 @@
                       <h4 class="info1"><%= prestamos.ID_PRESTAMOS %></h4>
                     </td>
                     <td>
-                      <h4 class="info1"><%= prestamos.OBSERVACIONES %></h4>
-                     </td>
-                     <td> <h4 class="info1"></h4><%= prestamos.ESTADO %></h4>
-                      </td><td><h4 class="info1"><%= prestamos.ID_USUARIO %></h4></td>
+                      <% if (datosPrestamo[index]) { %>
+                        <h4 class="info1"><%= datosReserva[index].NOMBRE_INSUMO %></h4>
+                      <% } else { %>
+                        <h4 class="info1">-</h4> 
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if (datosPrestamo[index]) { %>
+                        <h4 class="info1"><%= datosReserva[index].CANTIDAD %></h4>
+                      <% } else { %>
+                        <h4 class="info1">-</h4> 
+                      <% } %>
+                    </td>
+                    <td><h4 class="info1"><%= prestamos.ID_USUARIO %></h4></td>
+                    <td><h4 class="info1"><%= prestamos.ESTADO %></h4></td>
+                     
+                    
                      <td>
                       <% if (datosReserva[index]) { %>
                         <% const fechaPrestamo = new Date(datosReserva[index].FECHA_RES); %>
-                        <h5 class="info1"><%= fechaPrestamo.toLocaleDateString() %></h5>
+                        <h4 class="info1"><%= fechaPrestamo.toLocaleDateString() %></h4>
                       <% } else { %>
-                        <h5 class="info1">-</h5> 
+                        <h4 class="info1">-</h4> 
                       <% } %>
                     </td>
                     
-                    </td>
-                    <td>
-                      <h5 class="info1"><%= prestamos.CANTIDAD %> <%= prestamos.MEDIDAS %></h5>
-                    </td>
-                    <td>
-                      <h5 class="info1"> <%= prestamos.ESTADO %></h5>
-                    </td>
+               
+              
+                   
                   
                   </tr>
                 <% }); %>

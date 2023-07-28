@@ -62,7 +62,7 @@ const actualizarEstado = async (req, res) => {
       });
 
     // PAGINA EXITO
-    res.redirect("/success");
+    res.redirect("/devolucionInsumos");
   } catch (error) {
     res.redirect("/error");
   }
@@ -88,7 +88,7 @@ const insumosNoDevueltos = async (req, res) => {
     });
 
     res.render("insumosNoDevueltos", {
-      datosReserva: datosReserva,
+      datosReserva: datosReserva[0],
       datosPrestamo: datosPrestamoFiltrados,
     });
   } catch (error) {

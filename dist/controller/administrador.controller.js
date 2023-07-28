@@ -103,7 +103,7 @@ var actualizarEstado = /*#__PURE__*/function () {
           });
         case 10:
           // PAGINA EXITO
-          res.redirect("/success");
+          res.redirect("/devolucionInsumos");
           _context2.next = 16;
           break;
         case 13:
@@ -148,7 +148,7 @@ var insumosNoDevueltos = /*#__PURE__*/function () {
             return element.ESTADO === "POR ENTREGAR";
           });
           res.render("insumosNoDevueltos", {
-            datosReserva: datosReserva,
+            datosReserva: datosReserva[0],
             datosPrestamo: datosPrestamoFiltrados
           });
           _context3.next = 18;

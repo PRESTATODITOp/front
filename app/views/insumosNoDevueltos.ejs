@@ -41,68 +41,55 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% datosPrestamo.forEach((element,index)=>{ %>
-                      <tr>    
-                        <td><%= element.ID_PRESTAMOS %></td>
-                        <% if (datosReserva[index]) { %>
-                          <td><%= datosReserva[index].NOMBRE_INSUMO %></td>
-                          <td><%= element.CANTIDAD %></td>
-                        <% } else { %>
-                          <td></td>
-                          <td></td>
-                        <% } %>
-                        <% if (datosPrestamo[index]) { %>
-                          <td><%= element.ID_USUARIO %></td>
-                          <td><%= element.FINAL_PRESTAMO %></td>
-                        <% } else { %>
-                          <td></td>
-                          <td></td>
-                        <% } %>
-                        <td><%= element.ESTADO %></td>
-                    <td>
-                      <form action="actualizarEstado?id=<%=element.ID_PRESTAMOS%>&estado=ENTREGADO" method="POST">
-                      <button id="devuelto" type="submit" class="btn btn-success mr-2" data-id="<%= element.ID_PRESTAMOS %>">Entregado</button>
-                    </form>
-                    </td>
+                    <% datosPrestamo.forEach((prestamo, index) => { %>
+                      <tr class="info">
+                        <td>
+                          <h4 class="info1"><%= prestamo.ID_PRESTAMOS %></h4>
+                        </td>
+                        <td>
+                          <% if (datosReserva[index]) { %>
+                            <h4 class="info1"><%= datosReserva[index].NOMBRE_INSUMO %></h4>
+                          <% } else { %>
+                            <h4 class="info1">-</h4> 
+                          <% } %>
+                        </td>
+                        <td>
+                          <% if (datosReserva[index]) { %>
+                            <h4 class="info1"><%= datosReserva[index].CANTIDAD %></h4>
+                          <% } else { %>
+                            <h4 class="info1">-</h4> 
+                          <% } %>
+                        </td>
+                        <td>
+                          <h4 class="info1"><%= prestamo.ID_USUARIO %></h4>
+                        </td>
+                       
+                        <td>
+                          <% if (datosReserva[index]) { %>
+                            <% const fechaPrestamo = new Date(datosReserva[index].FECHA_RES); %>
+                            <h4 class="info1"><%= fechaPrestamo.toLocaleDateString() %></h4>
+                          <% } else { %>
+                            <h4 class="info1">-</h4> 
+                          <% } %>
+                        </td>
+                        <td>
+                          <h4 class="info1"><%= prestamo.ESTADO %></h4> </td>
+                        <td>
+                          <form action="actualizarEstado?id=<%= prestamo.ID_PRESTAMOS %>&estado=ENTREGADO" method="POST">
+                            <button id="devuelto" type="submit" class="btn btn-success mr-2" data-id="<%= prestamo.ID_PRESTAMOS %>">Entregado</button>
+                          </form>
+                        </td>
                       </tr>
                     <% }); %>
+                    
                   </tbody>                  
             </table>
           </div>
         </div>
       </div>
     </div>  
-    <!-- <script> //esto es una actualizacion
-      document.addEventListener("DOMContentLoaded", function () {
-        const entregadoLinks = document.querySelectorAll(".btn-success");
-    
-        entregadoLinks.forEach((link) => {
-          link.addEventListener("click", async function (e) {
-            e.preventDefault();
-            console.log("Evento de clic ejecutado"); // Agregar console.log aquí
-            const id = this.getAttribute("data-id");
-            try {
-              const response = await fetch(`/prestamos/${id}/entregado`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              });
-              if (response.ok) {
-                const data = await response.json();
-                alert("Estado actualizado a 'ENTREGADO'");
-                location.reload();
-              } else {
-                alert("No se pudo actualizar el estado.");
-              }
-            } catch (error) {
-              console.error(error);
-              alert("Error al actualizar el estado.");
-            }
-          });
-        });
-      });
-    </script> -->
+   
+    </script>
 </body>
 <%- include('./partials/footer.ejs') %>
 </html>
