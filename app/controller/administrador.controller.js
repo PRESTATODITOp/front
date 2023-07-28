@@ -4,10 +4,35 @@ import fetch from "node-fetch";
 const rolAdmin = (req, res) => {
   res.render("rol.ejs", { errorr: req.query.errorr });
 };
+const devolucionInsumos = async (req, res) => {
+  try {
+    const rutaRegistro = process.env.ENDPOINT + "/api/reserva";
+    const rutaPrestamo = process.env.ENDPOINT + "/api/prestamos";
 
-const devolucionInsumos = (req, res) => {
-  res.render("devolucionInsumos.ejs");
+    const opciones = {
+      method: "GET",
+    };
+
+    const [datosReserva, datosPrestamo] = await Promise.all([
+      fetch(rutaRegistro, opciones).then((response) => response.json()),
+      fetch(rutaPrestamo, opciones).then((response) => response.json()),
+    ]);
+
+    // Filtrar los datos para mostrar solo los elementos con el estado "ENTREGADO"
+    const datosPrestamoFiltrados = datosPrestamo[0].filter((element) => {
+      return element.ESTADO === "ENTREGADO";
+    });
+
+    res.render("devolucionInsumos", {
+      datosReserva: datosReserva,
+      datosPrestamo: datosPrestamoFiltrados,
+    });
+  } catch (error) {
+    console.error(error);
+    res.redirect("/");
+  }
 };
+
 
 const actualizarEstado = async (req, res) => {
   const idPrestamo = req.query.id;
@@ -42,42 +67,30 @@ const actualizarEstado = async (req, res) => {
 };
 
 const insumosNoDevueltos = async (req, res) => {
-  let insumosD = {};
   try {
-    let rutaRegistro = process.env.ENDPOINT + "/api/reserva";
-    let rutaPrestamo = process.env.ENDPOINT + "/api/prestamos";
+    const rutaRegistro = process.env.ENDPOINT + "/api/reserva";
+    const rutaPrestamo = process.env.ENDPOINT + "/api/prestamos";
 
-    let opciones = {
+    const opciones = {
       method: "GET",
-    }; 
-    
+    };
+
     const [datosReserva, datosPrestamo] = await Promise.all([
       fetch(rutaRegistro, opciones).then((response) => response.json()),
       fetch(rutaPrestamo, opciones).then((response) => response.json()),
     ]);
 
-    const result = await fetch(rutaPrestamo, opciones)
-      .then((response) => response.json())
-      .then((data) => {
-        let datosMap = data[0].map((element) => {
-          if (element.ESTADO === "ENTREGADO") {
-            return element;
-          }
-        });
- 
-        insumosD= datosMap.filter((input) => {
-          return input !== undefined;
-        });
-      })
-      .catch((err) => console.error("error en peticion" + err));
+    // Filtrar los datos para mostrar solo los elementos con el estado "ENTREGADO"
+    const datosPrestamoFiltrados = datosPrestamo[0].filter((element) => {
+      return element.ESTADO === "POR ENTREGAR";
+    });
 
-      res.render("insumosNoDevueltos", {
-        insumosD:insumosD,
-        datosReserva: datosReserva[0],
-        datosPrestamo: datosPrestamo,
-      });
+    res.render("insumosNoDevueltos", {
+      datosReserva: datosReserva,
+      datosPrestamo: datosPrestamoFiltrados,
+    });
   } catch (error) {
-    console.error("Error al ejecutar la función 'aprobar':", error);
+    console.error(error);
     res.redirect("/");
   }
 };
