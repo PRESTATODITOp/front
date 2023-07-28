@@ -126,7 +126,7 @@ var generarPdf = /*#__PURE__*/function () {
 }();
 var imprimirPDFC = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var response, ambienteData, doc, logoHeight, logoWidth, __dirname, imagePath, pageWidth, pageHeight, logoX, logoY, table, generador, fechaImpresion;
+    var response, ambienteData, doc, logoHeight, logoWidth, __dirname, imagePath, pageWidth, pageHeight, logoX, logoY, table, validarToken, ruta, nombres, fechaActual, generadoPor;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
@@ -188,29 +188,41 @@ var imprimirPDFC = /*#__PURE__*/function () {
             }
           });
         case 24:
-          // Agregar el pie de página
-          generador = 'prestaTodito';
-          fechaImpresion = new Date().toLocaleString();
-          doc.fontSize(10).text("Generado por: ".concat(generador));
-          doc.fontSize(10).text("Fecha y hora de impresi\xF3n: ".concat(fechaImpresion), {
-            align: 'right'
+          validarToken = _jsonwebtoken["default"].verify(req.cookies.PRESTATODITO, process.env.SECRET_KEY);
+          ruta = process.env.ENDPOINT + "/api/usuario/".concat(validarToken.ID_USUARIO);
+          nombres = '';
+          _context2.next = 29;
+          return _axios["default"].get(ruta).then(function (response) {
+            nombres = "".concat(response.data[0][0].NOMBRE, " ").concat(response.data[0][0].APELLIDO);
+          })["catch"](function (err) {
+            return console.error("error en peticion" + err);
           });
-
-          // Finalizar el PDF
+        case 29:
+          // Agregar los detalles en el pie de página
+          fechaActual = (0, _momentTimezone["default"])().tz('America/Bogota').format('YYYY-MM-DD h:mm:ss A');
+          generadoPor = "Generado por: ".concat(nombres);
+          doc.fontSize(10).text(fechaActual, {
+            align: 'center',
+            opacity: 0.5
+          });
+          doc.fontSize(10).text(generadoPor, {
+            align: 'center',
+            opacity: 0.5
+          });
           doc.end();
-          _context2.next = 35;
+          _context2.next = 40;
           break;
-        case 31:
-          _context2.prev = 31;
+        case 36:
+          _context2.prev = 36;
           _context2.t0 = _context2["catch"](0);
           // Manejar errores de solicitud o cualquier otro error
           console.error(_context2.t0);
           res.status(500).send('Error al generar el PDF');
-        case 35:
+        case 40:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 31]]);
+    }, _callee2, null, [[0, 36]]);
   }));
   return function imprimirPDFC(_x3, _x4) {
     return _ref2.apply(this, arguments);

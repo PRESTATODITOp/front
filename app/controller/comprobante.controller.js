@@ -140,13 +140,21 @@ const imprimirPDFC = async (req, res) => {
     // Agregar la tabla al documento con un tamaño de letra más pequeño
     await doc.table(table, { width: 500, prepareHeader: () => doc.font('Helvetica-Bold').fontSize(10), prepareRow: () => doc.font('Helvetica').fontSize(10) });
 
-    // Agregar el pie de página
-    const generador = 'prestaTodito';
-    const fechaImpresion = new Date().toLocaleString();
-    doc.fontSize(10).text(`Generado por: ${generador}`);
-    doc.fontSize(10).text(`Fecha y hora de impresión: ${fechaImpresion}`, { align: 'right' });
+   const validarToken = jwt.verify(req.cookies.PRESTATODITO, process.env.SECRET_KEY);
+    let ruta = process.env.ENDPOINT + `/api/usuario/${validarToken.ID_USUARIO}`;
 
-    // Finalizar el PDF
+    let nombres = '';
+    await axios.get(ruta)
+      .then((response) => {
+        nombres = `${response.data[0][0].NOMBRE} ${response.data[0][0].APELLIDO}`;
+      })
+      .catch((err) => console.error("error en peticion" + err));
+
+    // Agregar los detalles en el pie de página
+    const fechaActual = moment().tz('America/Bogota').format('YYYY-MM-DD h:mm:ss A');
+    const generadoPor = `Generado por: ${nombres}`;
+    doc.fontSize(10).text(fechaActual, { align: 'center', opacity: 0.5 });
+    doc.fontSize(10).text(generadoPor, { align: 'center', opacity: 0.5 });
     doc.end();
   } catch (error) {
     // Manejar errores de solicitud o cualquier otro error
