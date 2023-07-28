@@ -41,7 +41,7 @@
                   <tr>    
                     <td><%= element.ID_PRESTAMOS %></td>
                     <% if (datosReserva[index]) { %>
-                      <td><%= datosReserva[index].NOMBRE_INSUMO %></td>
+                      <td><%= element.NOMBRE_INSUMO %></td>
                       <td><%= element.CANTIDAD %></td>
                     <% } else { %>
                       <td></td>
@@ -53,9 +53,7 @@
                       <td></td>
                     <% } %>
                     <td><%= element.ESTADO %></td>
-                     <% if (datosPrestamo[index]) { %>
                     <td><%= element.FINAL_PRESTAMO %></td> 
-                     <% } %>
                   </tr>
                 <% }); %>
               </tbody>            
