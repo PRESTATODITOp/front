@@ -382,10 +382,10 @@ var InsertarAmbientes = /*#__PURE__*/function () {
             jornada: req.body.JORNADA,
             fecha_res: req.body.FECHA,
             hora_res: req.body.HORA,
-            cantidad: req.body.NUMERO_APRENDICES,
+            cantidad: "1",
             tiempo_requerido: "00:00:00",
             tipo_insumo: "ambiente",
-            caracteristicas: ""
+            caracteristicas: req.body.NUMERO_APRENDICES
           };
           url = process.env.ENDPOINT + "/api/insumosReserva";
           options = {
