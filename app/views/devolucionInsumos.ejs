@@ -37,9 +37,26 @@
                 </tr>
               </thead>
               <tbody>
-              
-                
-              </tbody>
+                <% datosPrestamo.forEach((element,index)=>{ %>
+                  <tr>    
+                    <td><%= element.ID_PRESTAMOS %></td>
+                    <% if (datosReserva[index]) { %>
+                      <td><%= datosReserva[index].NOMBRE_INSUMO %></td>
+                      <td><%= element.CANTIDAD %></td>
+                    <% } else { %>
+                      <td></td>
+                      <td></td>
+                    <% } %>
+                    <% if (datosPrestamo[index]) { %>
+                      <td><%= element.ID_USUARIO %></td>
+                    <% } else { %>
+                      <td></td>
+                    <% } %>
+                    <td><%= element.ESTADO %></td>
+                    <td><%= element.FINAL_PRESTAMO %></td> 
+                  </tr>
+                <% }); %>
+              </tbody>            
             </table>
           </div>
         </div>
